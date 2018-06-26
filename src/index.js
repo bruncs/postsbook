@@ -1,18 +1,5 @@
-import React, { Component, Fragment } from 'react';
-import { render } from 'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
 
-class App extends Component {
-  state = {};
-
-  render() {
-    return (
-      <Fragment>
-        <h1>
-Hello, world!
-        </h1>
-      </Fragment>
-    );
-  }
-}
-
-render(<App />, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('root'));
