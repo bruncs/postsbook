@@ -1,0 +1,42 @@
+{
+  "name": "postsbook",
+  "version": "1.0.0",
+  "description": "ReactJS frontend for a social network replica",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server --mode development",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bruncs/postsbook.git"
+  },
+  "author": "Bruno Correia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bruncs/postsbook/issues"
+  },
+  "homepage": "https://github.com/bruncs/postsbook#readme",
+  "dependencies": {
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.5",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.10.0",
+    "prettier-eslint": "^8.8.2",
+    "webpack": "^4.12.1",
+    "webpack-cli": "^3.0.8",
+    "webpack-dev-server": "^3.1.4"
+  }
+}
