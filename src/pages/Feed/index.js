@@ -1,18 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
+import { PostList } from './styles';
 import Header from '../../components/Header';
+import Post from '../../components/Post';
 
 class Feed extends Component {
   state = {};
 
   render() {
     return (
-      <div>
+      <Fragment>
         <Header />
-        <h1>
-Feed
-        </h1>
-      </div>
+        <PostList>
+          <Post />
+          <Post />
+          <Post />
+        </PostList>
+      </Fragment>
     );
   }
 }

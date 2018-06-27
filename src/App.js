@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Feed from './pages/Feed';
 
+import './styles/global';
+
 class App extends Component {
   state = {};
 
