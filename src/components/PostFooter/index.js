@@ -8,7 +8,7 @@ const PostHeader = () => (
     <div>
       <LikeButton>
         <Icon src={LikeIcon} />
-        Curtir
+        Like
       </LikeButton>
     </div>
   </Container>
