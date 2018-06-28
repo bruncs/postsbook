@@ -10,8 +10,8 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.p`
-  font-size: 15px;
+  font-size: 14px;
   color: #333;
   margin-top: 15px;
-  text-align: justify;
+  line-height: 18px;
 `;

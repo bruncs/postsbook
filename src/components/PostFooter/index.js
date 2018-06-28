@@ -5,12 +5,10 @@ import LikeIcon from '../../assets/images/icons/like.png';
 
 const PostHeader = () => (
   <Container>
-    <div>
-      <LikeButton>
-        <Icon src={LikeIcon} />
-        Like
-      </LikeButton>
-    </div>
+    <LikeButton>
+      <Icon src={LikeIcon} />
+      Like
+    </LikeButton>
   </Container>
 );
 

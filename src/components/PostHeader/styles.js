@@ -14,7 +14,7 @@ export const Avatar = styled.img`
   margin-right: 15px;
 `;
 
-export const Username = styled.p`
+export const Name = styled.p`
   font-size: 16px;
   font-weight: bold;
   color: #666;
