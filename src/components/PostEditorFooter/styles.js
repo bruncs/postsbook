@@ -8,31 +8,26 @@ export const Container = styled.div`
   align-items: center;
 `;
 
-export const LikeButton = styled.button`
+export const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 200px;
+  flex: 1;
   height: 30px;
-  background-color: #fff;
+  background: #4267b2;
+  color: #fff;
   border: none;
-  color: #999;
   font-size: 14px;
   font-weight: bold;
+  border-radius: 3px;
 
   &:hover {
-    background-color: #f6f6f6;
+    background-color: #314c86;
     cursor: pointer;
   }
 
   &:active {
-    background-color: #eee;
+    background-color: #233868;
     cursor: pointer;
   }
-`;
-
-export const Icon = styled.img`
-  width: 18px;
-  height: 18px;
-  margin-right: 5px;
 `;

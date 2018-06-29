@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 import {
   Container, Avatar, Name, Time,
 } from './styles';
-import Avatar1 from '../../assets/images/avatars/01.png';
+import Avatar3 from '../../assets/images/avatars/03.png';
 
 const PostHeader = props => (
   <Container>
-    <Avatar src={Avatar1} alt="" />
+    <Avatar src={Avatar3} alt="" />
     <div>
       <Name>
         {props.user}

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 700px;
-  padding: 30px;
+  padding: 25px;
   border: 1px solid #ccc;
   border-radius: 5px;
   background: #fff;
