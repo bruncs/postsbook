@@ -1,14 +1,9 @@
-import React, { Component } from 'react';
-import Feed from './pages/Feed';
+import React from 'react';
 
 import './styles/global';
 
-class App extends Component {
-  state = {};
+import Routes from './routes';
 
-  render() {
-    return <Feed />;
-  }
-}
+const App = () => <Routes />;
 
 export default App;
