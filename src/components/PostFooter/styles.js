@@ -6,9 +6,10 @@ export const Container = styled.div`
   margin-top: 15px;
   border-top: 1px solid #eee;
   align-items: center;
+  justify-content: space-between;
 `;
 
-export const LikeButton = styled.button`
+export const ActionButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
