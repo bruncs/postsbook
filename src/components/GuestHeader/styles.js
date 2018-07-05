@@ -1,14 +1,13 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  background: linear-gradient(#4267b2, #29487d);
+  background: linear-gradient(#4e69a2, #3b5998);
   display: flex;
   flex: 1;
   align-items: center;
   justify-content: center;
   height: 83px;
   border-bottom: 1px solid #29487d;
-  position: sticky;
   top: 0;
 `;
 
