@@ -9,7 +9,6 @@ injectGlobal`
   }
 
   body {
-    background: #E9EBEE;
     font-family: Helvetica, Arial, sans-serif;
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;

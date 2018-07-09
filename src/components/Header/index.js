@@ -4,7 +4,7 @@ import { Container, Title } from './styles';
 const Header = () => (
   <Container>
     <Title>
-Postsbook
+PostsBook
     </Title>
   </Container>
 );

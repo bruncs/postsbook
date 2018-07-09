@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 
-import { PostList } from './styles';
+import { Container, PostList } from './styles';
 import Header from '../../components/Header';
 import PostEditor from '../../components/PostEditor';
 import Post from '../../components/Post';
@@ -18,7 +18,7 @@ class Feed extends Component {
   render() {
     const { post } = this.state;
     return (
-      <Fragment>
+      <Container>
         <Header />
         <PostList>
           <PostEditor />
@@ -26,7 +26,7 @@ class Feed extends Component {
           <Post data={post} />
           <Post data={post} />
         </PostList>
-      </Fragment>
+      </Container>
     );
   }
 }
