@@ -11,7 +11,7 @@ export const Avatar = styled.img`
   margin-right: 10px;
 `;
 
-export const TextArea = styled.div`
+export const TextField = styled.div`
   border: 1px solid #ccc;
   border-radius: 34px;
   display: block;

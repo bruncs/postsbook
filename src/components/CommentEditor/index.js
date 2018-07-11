@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Avatar, TextArea } from './styles';
+import { Container, Avatar, TextField } from './styles';
 
 import Avatar1 from '../../assets/images/avatars/01.png';
 
@@ -15,9 +15,9 @@ class CommentEditor extends Component {
     return (
       <Container>
         <Avatar src={Avatar1} />
-        <TextArea contentEditable="true" suppressContentEditableWarning id="comment-textarea">
+        <TextField contentEditable="true" suppressContentEditableWarning id="comment-textfield">
           {!editing && content.length < 1 ? placeholder : content}
-        </TextArea>
+        </TextField>
       </Container>
     );
   }
