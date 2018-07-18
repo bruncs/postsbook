@@ -17,6 +17,7 @@ import {
 } from './styles';
 
 class GuestHeader extends Component {
+
   handleSubmit() {
     const { signup } = this.props;
     return signup();

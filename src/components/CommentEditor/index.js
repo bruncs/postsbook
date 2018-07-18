@@ -10,12 +10,27 @@ class CommentEditor extends Component {
     editing: false,
   };
 
+  handleEditorFocus = () => {
+    this.setState({ editing: true });
+  };
+
+  handleEditorBlur = () => {
+    const content = document.getElementById('comment-textfield').textContent;
+    this.setState({ content, editing: false });
+  };
+
   render() {
     const { content, placeholder, editing } = this.state;
     return (
       <Container>
         <Avatar src={Avatar1} />
-        <TextField contentEditable="true" suppressContentEditableWarning id="comment-textfield">
+        <TextField
+          contentEditable="true"
+          onFocus={this.handleEditorFocus}
+          onBlur={this.handleEditorBlur}
+          suppressContentEditableWarning
+          id="comment-textfield"
+        >
           {!editing && content.length < 1 ? placeholder : content}
         </TextField>
       </Container>
