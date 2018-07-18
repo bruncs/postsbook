@@ -1,7 +1,7 @@
 // TYPES
 export const Types = {
-  SIGNUP_REQUEST: 'users/SIGNUP_REQUEST',
-  SIGNUP_SUCCESS: 'users/SIGNUP_SUCCESS',
+  SIGNUP_REQUEST: 'user/SIGNUP_REQUEST',
+  SIGNUP_SUCCESS: 'user/SIGNUP_SUCCESS',
 };
 
 const INITIAL_STATE = {
@@ -10,7 +10,7 @@ const INITIAL_STATE = {
 };
 
 // REDUCER
-export default function users(state = INITIAL_STATE, action) {
+export default function user(state = INITIAL_STATE, action) {
   switch (action.type) {
     case Types.SIGNUP_REQUEST:
       return { ...state, loading: true };

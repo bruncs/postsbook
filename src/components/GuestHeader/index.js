@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Creators as UserActions } from '../../store/ducks/users';
+import { Creators as UserActions } from '../../store/ducks/user';
 
 import {
   Container,
@@ -17,10 +17,9 @@ import {
 } from './styles';
 
 class GuestHeader extends Component {
-
-  handleSubmit() {
-    const { signup } = this.props;
-    return signup();
+  handleSubmit(e) {
+    e.preventDefault();
+    return this.users.signup();
   }
 
   render() {
