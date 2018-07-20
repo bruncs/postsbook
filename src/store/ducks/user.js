@@ -2,20 +2,27 @@
 export const Types = {
   SIGNUP_REQUEST: 'user/SIGNUP_REQUEST',
   SIGNUP_SUCCESS: 'user/SIGNUP_SUCCESS',
+  SIGNIN_REQUEST: 'user/SIGNIN_REQUEST',
+  SIGNIN_SUCCESS: 'user/SIGNIN_SUCCESS',
 };
 
 const INITIAL_STATE = {
   data: [],
-  loading: false,
+  signupLoading: false,
+  signinLoading: false,
 };
 
 // REDUCER
 export default function user(state = INITIAL_STATE, action) {
   switch (action.type) {
     case Types.SIGNUP_REQUEST:
-      return { ...state, loading: true };
+      return { ...state, signupLoading: true };
     case Types.SIGNUP_SUCCESS:
-      return { ...state, loading: false, data: action.payload.data };
+      return { ...state, signupLoading: false, data: action.payload.data };
+    case Types.SIGNIN_REQUEST:
+      return { ...state, signinLoading: true };
+    case Types.SIGNIN_SUCCESS:
+      return { ...state, signinLoading: false, data: action.payload.data };
     default:
       return state;
   }
@@ -23,10 +30,23 @@ export default function user(state = INITIAL_STATE, action) {
 
 // ACTIONS
 export const Creators = {
-  signupRequest: () => ({ type: Types.SIGNUP_REQUEST }),
+  signupRequest: data => ({
+    type: Types.SIGNUP_REQUEST,
+    payload: { data },
+  }),
 
   signupSuccess: data => ({
     type: Types.SIGNUP_SUCCESS,
+    payload: { data },
+  }),
+
+  signinRequest: data => ({
+    type: Types.SIGNIN_REQUEST,
+    payload: { data },
+  }),
+
+  signinSuccess: data => ({
+    type: Types.SIGNIN_SUCCESS,
     payload: { data },
   }),
 };

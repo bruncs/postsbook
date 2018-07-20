@@ -17,12 +17,25 @@ import {
 } from './styles';
 
 class GuestHeader extends Component {
-  handleSubmit(e) {
+  state = {
+    data: {
+      email: '',
+      password: '',
+    },
+  };
+
+  handleChange = e => this.setState({
+    data: { ...this.state.data, [e.target.name]: e.target.value },
+  });
+
+  handleSubmit = (e) => {
+    const { data } = this.state;
     e.preventDefault();
-    return this.users.signup();
-  }
+    this.props.signinRequest(data);
+  };
 
   render() {
+    const { data } = this.state;
     return (
       <Container>
         <Grid>
@@ -32,22 +45,35 @@ Postsbook
             </Title>
           </GridColumn>
           <GridColumn padding="6px 0 0 48px">
-            <Form>
+            <Form onSubmit={this.handleSubmit}>
               <FormField padding="0 0 0 14px">
                 <Label htmlFor="email">
 Email
                 </Label>
 
-                <Input type="text" name="email" margin="4px 0 0 0" />
+                <Input
+                  type="text"
+                  name="email"
+                  margin="4px 0 0 0"
+                  value={data.email}
+                  onChange={this.handleChange}
+                />
               </FormField>
               <FormField padding="0 0 0 14px">
                 <Label htmlFor="password">
 Senha
                 </Label>
-                <Input type="password" name="password" margin="4px 0 0 0" />
+                <Input
+                  type="password"
+                  name="password"
+                  margin="4px 0 0 0"
+                  autoComplete="current-password"
+                  value={data.password}
+                  onChange={this.handleChange}
+                />
               </FormField>
-              <Button type="submit" onClick={this.handleSubmit}>
-                Entrar
+              <Button type="submit">
+Entrar
               </Button>
             </Form>
           </GridColumn>
