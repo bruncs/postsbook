@@ -57,6 +57,7 @@ Email
                   margin="4px 0 0 0"
                   value={data.email}
                   onChange={this.handleChange}
+                  autoComplete="email"
                 />
               </FormField>
               <FormField padding="0 0 0 14px">

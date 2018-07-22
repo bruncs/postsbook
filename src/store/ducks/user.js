@@ -2,8 +2,10 @@
 export const Types = {
   SIGNUP_REQUEST: 'user/SIGNUP_REQUEST',
   SIGNUP_SUCCESS: 'user/SIGNUP_SUCCESS',
+  SIGNUP_FAILURE: 'user/SIGNUP_FAILURE',
   SIGNIN_REQUEST: 'user/SIGNIN_REQUEST',
   SIGNIN_SUCCESS: 'user/SIGNIN_SUCCESS',
+  SIGNIN_FAILURE: 'user/SIGNIN_FAILURE',
 };
 
 const INITIAL_STATE = {
@@ -19,9 +21,13 @@ export default function user(state = INITIAL_STATE, action) {
       return { ...state, signupLoading: true };
     case Types.SIGNUP_SUCCESS:
       return { ...state, signupLoading: false, data: action.payload.data };
+    case Types.SIGNUP_FAILURE:
+      return { ...state, signupLoading: false, data: action.payload.data };
     case Types.SIGNIN_REQUEST:
       return { ...state, signinLoading: true };
     case Types.SIGNIN_SUCCESS:
+      return { ...state, signinLoading: false, data: action.payload.data };
+    case Types.SIGNIN_FAILURE:
       return { ...state, signinLoading: false, data: action.payload.data };
     default:
       return state;
@@ -40,6 +46,11 @@ export const Creators = {
     payload: { data },
   }),
 
+  signupFailure: data => ({
+    type: Types.SIGNUP_FAILURE,
+    payload: { data },
+  }),
+
   signinRequest: data => ({
     type: Types.SIGNIN_REQUEST,
     payload: { data },
@@ -47,6 +58,11 @@ export const Creators = {
 
   signinSuccess: data => ({
     type: Types.SIGNIN_SUCCESS,
+    payload: { data },
+  }),
+
+  signinFailure: data => ({
+    type: Types.SIGNIN_FAILURE,
     payload: { data },
   }),
 };

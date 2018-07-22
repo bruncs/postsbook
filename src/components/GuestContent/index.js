@@ -50,6 +50,7 @@ Abra uma conta
             </Subtitle>
             <Form onSubmit={this.handleSubmit}>
               <Input
+                autoComplete="name"
                 name="name"
                 type="text"
                 placeholder="Nome"
@@ -57,6 +58,7 @@ Abra uma conta
                 onChange={this.handleChange}
               />
               <Input
+                autoComplete="email"
                 name="email"
                 type="email"
                 placeholder="Email"
@@ -64,6 +66,7 @@ Abra uma conta
                 onChange={this.handleChange}
               />
               <Input
+                autoComplete="new-password"
                 name="password"
                 type="password"
                 placeholder="Senha"

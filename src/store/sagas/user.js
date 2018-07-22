@@ -9,7 +9,7 @@ export function* signup(action) {
 
     yield put(UserActions.signupSuccess(response.data));
   } catch (err) {
-    console.log(err);
+    yield put(UserActions.signupFailure(err.response.data));
   }
 }
 
@@ -19,6 +19,6 @@ export function* signin(action) {
 
     yield put(UserActions.signinSuccess(response.data));
   } catch (err) {
-    console.log(err);
+    yield put(UserActions.signinFailure(err.response.data));
   }
 }
