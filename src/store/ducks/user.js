@@ -12,6 +12,7 @@ const INITIAL_STATE = {
   data: [],
   signupLoading: false,
   signinLoading: false,
+  isAuthenticated: false,
 };
 
 // REDUCER
@@ -20,13 +21,17 @@ export default function user(state = INITIAL_STATE, action) {
     case Types.SIGNUP_REQUEST:
       return { ...state, signupLoading: true };
     case Types.SIGNUP_SUCCESS:
-      return { ...state, signupLoading: false, data: action.payload.data };
+      return {
+        ...state, signupLoading: false, data: action.payload.data, isAuthenticated: true,
+      };
     case Types.SIGNUP_FAILURE:
       return { ...state, signupLoading: false, data: action.payload.data };
     case Types.SIGNIN_REQUEST:
       return { ...state, signinLoading: true };
     case Types.SIGNIN_SUCCESS:
-      return { ...state, signinLoading: false, data: action.payload.data };
+      return {
+        ...state, signinLoading: false, data: action.payload.data, isAuthenticated: true,
+      };
     case Types.SIGNIN_FAILURE:
       return { ...state, signinLoading: false, data: action.payload.data };
     default:

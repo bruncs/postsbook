@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -17,25 +19,44 @@ import {
 } from './styles';
 
 class GuestHeader extends Component {
+  static propTypes = {
+    signinRequest: PropTypes.func.isRequired,
+    data: PropTypes.shape({
+      signinLoading: PropTypes.bool.isRequired,
+      isAuthenticated: PropTypes.bool.isRequired,
+      user: PropTypes.shape({
+        email: PropTypes.string,
+      }),
+      token: PropTypes.string,
+    }).isRequired,
+  };
+
   state = {
-    data: {
+    formData: {
       email: '',
       password: '',
     },
   };
 
   handleChange = e => this.setState({
-    data: { ...this.state.data, [e.target.name]: e.target.value },
+    formData: { ...this.state.formData, [e.target.name]: e.target.value },
   });
 
   handleSubmit = (e) => {
-    const { data } = this.state;
+    const { formData } = this.state;
+    const { signinRequest } = this.props;
+
     e.preventDefault();
-    this.props.signinRequest(data);
+    signinRequest(formData);
   };
 
   render() {
-    const { data } = this.state;
+    const { formData } = this.state;
+    const { data } = this.props;
+    if (data.isAuthenticated) {
+      return <Redirect to="/feed" />;
+    }
+
     return (
       <Container>
         <Grid>
@@ -55,7 +76,7 @@ Email
                   type="text"
                   name="email"
                   margin="4px 0 0 0"
-                  value={data.email}
+                  value={formData.email}
                   onChange={this.handleChange}
                   autoComplete="email"
                 />
@@ -69,7 +90,7 @@ Senha
                   name="password"
                   margin="4px 0 0 0"
                   autoComplete="current-password"
-                  value={data.password}
+                  value={formData.password}
                   onChange={this.handleChange}
                 />
               </FormField>
@@ -85,7 +106,7 @@ Entrar
 }
 
 const mapStateToProps = state => ({
-  user: state.user,
+  data: state.user,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(UserActions, dispatch);
