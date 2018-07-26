@@ -6,7 +6,9 @@ export const Types = {
   SIGNIN_REQUEST: 'user/SIGNIN_REQUEST',
   SIGNIN_SUCCESS: 'user/SIGNIN_SUCCESS',
   SIGNIN_FAILURE: 'user/SIGNIN_FAILURE',
-  SIGNOUT: 'user/SIGNOUT',
+  SIGNOUT_REQUEST: 'user/SIGNOUT_REQUEST',
+  SIGNOUT_SUCCESS: 'user/SIGNOUT_SUCCESS',
+  SIGNOUT_FAILURE: 'user/SIGNOUT_FAILURE',
 };
 
 const INITIAL_STATE = {
@@ -41,8 +43,10 @@ export default function user(state = INITIAL_STATE, action) {
       };
     case Types.SIGNIN_FAILURE:
       return { ...state, signinLoading: false, errors: action.payload.errors };
-    case Types.SIGNOUT:
+    case Types.SIGNOUT_SUCCESS:
       return INITIAL_STATE;
+    case Types.SIGNOUT_FAILURE:
+      return { ...state, errors: action.payload.errors };
     default:
       return state;
   }
@@ -80,7 +84,16 @@ export const Creators = {
     payload: { errors },
   }),
 
-  signout: () => ({
-    type: Types.SIGNOUT,
+  signoutRequest: () => ({
+    type: Types.SIGNOUT_REQUEST,
+  }),
+
+  signoutSuccess: () => ({
+    type: Types.SIGNOUT_SUCCESS,
+  }),
+
+  signoutFailure: errors => ({
+    type: Types.SIGNOUT_FAILURE,
+    payload: { errors },
   }),
 };

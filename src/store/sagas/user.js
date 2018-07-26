@@ -32,3 +32,16 @@ export function* signin(action) {
     yield put(UserActions.signinFailure(err.response.data));
   }
 }
+
+export function* signout() {
+  try {
+    // Clears user info
+    localStorage.removeItem('token');
+    localStorage.removeItem('email');
+
+    // Calls success action
+    yield put(UserActions.signoutSuccess());
+  } catch (err) {
+    yield put(UserActions.signoutFailure(err));
+  }
+}
