@@ -1,12 +1,40 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { Container, Title } from './styles';
+import { Creators as UserCreators } from '../../store/ducks/user';
 
-const Header = () => (
-  <Container>
-    <Title>
+class Header extends Component {
+  handleClick = () => {
+    this.props.signout();
+  };
+
+  render() {
+    if (!this.props.user.isAuthenticated) {
+      return <Redirect to="./" />;
+    }
+    return (
+      <Container>
+        <Title>
 PostsBook
-    </Title>
-  </Container>
-);
+        </Title>
+        <button type="button" onClick={this.handleClick}>
+          Sair
+        </button>
+      </Container>
+    );
+  }
+}
 
-export default Header;
+const mapStateToProps = state => ({
+  user: state.user,
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators(UserCreators, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Header);
