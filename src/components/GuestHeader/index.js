@@ -16,6 +16,7 @@ import {
   Form,
   FormField,
   Button,
+  Message,
 } from './styles';
 
 class GuestHeader extends Component {
@@ -28,6 +29,9 @@ class GuestHeader extends Component {
         email: PropTypes.string,
       }),
       token: PropTypes.string,
+      errors: PropTypes.shape({
+        error: PropTypes.string,
+      }),
     }).isRequired,
   };
 
@@ -56,7 +60,6 @@ class GuestHeader extends Component {
     if (data.isAuthenticated) {
       return <Redirect to="/feed" />;
     }
-
     return (
       <Container>
         <Grid>
@@ -64,6 +67,13 @@ class GuestHeader extends Component {
             <Title>
 Postsbook
             </Title>
+          </GridColumn>
+          <GridColumn>
+            {data.errors && (
+            <Message margin="15px 0 0 0">
+              {data.errors.error}
+            </Message>
+            )}
           </GridColumn>
           <GridColumn padding="6px 0 0 48px">
             <Form onSubmit={this.handleSubmit}>

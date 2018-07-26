@@ -26,6 +26,7 @@ export const Title = styled.h1`
 
 export const GridColumn = styled.div`
   width: 450px;
+
   padding: ${(props) => {
     const { padding } = props;
     return padding || '0px';
@@ -75,4 +76,20 @@ export const Button = styled.button`
   font-size: 12px;
   font-weight: bold;
   color: #fff;
+`;
+
+export const Message = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: ${(props) => {
+    const { margin } = props;
+    return margin || '0px';
+  }};
+  height: 30px;
+  background-color: #be4b49;
+  border: 1px solid #993332;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 12px;
 `;
