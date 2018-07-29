@@ -65,7 +65,7 @@ export const ProfileButton = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 28px;
-  padding: 0px 10px 0 10px;
+  padding: 0px 10px 0 8px;
   border: none;
   border-radius: 2px;
   font-size: 12px;
@@ -79,12 +79,50 @@ export const ProfileButton = styled.div`
 `;
 
 export const Divider = styled.div`
-  width: 5px;
+  width: 1px;
+  height: 20px;
+  background-color: #3b5ca0;
+  margin: 0 8px;
 `;
 
 export const Avatar = styled.img`
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  margin: 0 5px 0 0;
+  margin: 0 8px 0 0;
+`;
+
+export const Icon = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  height: 24px;
+  width: 24px;
+  opacity: 0.6;
+  cursor: pointer;
+
+  background: ${(props) => {
+    const { background } = props;
+    return background || '#4267b2';
+  }};
+  margin: ${(props) => {
+    const { margin } = props;
+    return margin || '0px';
+  }};
+
+  &:hover {
+    opacity: 0.9;
+  }
+`;
+
+export const Counter = styled.div`
+  display: inline-block;
+  background: #fa3e3e;
+  border-radius: 15%;
+  color: #fff;
+  font-size: 0.7em;
+  font-weight: bold;
+  padding: 1px 2px;
+  margin: -8px 0 0 0;
+  z-index: 2;
 `;

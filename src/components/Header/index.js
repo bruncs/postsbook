@@ -6,9 +6,18 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Creators as UserCreators } from '../../store/ducks/user';
 import {
-  Container, Grid, GridColumn, Button, ProfileButton, Divider, Avatar,
+  Container,
+  Grid,
+  GridColumn,
+  Button,
+  ProfileButton,
+  Divider,
+  Avatar,
+  Icon,
+  Counter,
 } from './styles';
 import Logo from '../../assets/images/icons/whitelogo.png';
+import Iconset2 from '../../assets/images/icons/iconset2.png';
 import Avatar1 from '../../assets/images/avatars/01.png';
 
 class Header extends Component {
@@ -29,6 +38,7 @@ class Header extends Component {
   render() {
     const { user } = this.props;
     const firstName = user.data.user.name.split(' ')[0];
+    const requestsCount = user.data.user.friendRequests.length;
     return (
       <Container>
         <Grid>
@@ -41,7 +51,6 @@ class Header extends Component {
             <Link to={`./profile?id=${user.data.user._id}`} style={{ textDecoration: 'none' }}>
               <ProfileButton>
                 <Avatar alt="" src={Avatar1} />
-                <Divider />
                 {firstName}
               </ProfileButton>
             </Link>
@@ -51,6 +60,11 @@ class Header extends Component {
                 Página Inicial
               </Button>
             </Link>
+            <Divider />
+            <Icon background={`#4267b2 url(${Iconset2}) no-repeat 0 -467px`} margin="0 -5px 0 0" />
+            <Counter>
+              {requestsCount}
+            </Counter>
             <Divider />
             <Button name="signout" type="button" onClick={this.handleSignout}>
               Sair
