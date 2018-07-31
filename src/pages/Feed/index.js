@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Creators as UserCreators } from '../../store/ducks/user';
+import { Creators as FeedCreators } from '../../store/ducks/feed';
 
 import { Container, PostList } from './styles';
 import Header from '../../components/Header';
@@ -16,20 +17,19 @@ class Feed extends Component {
     user: PropTypes.shape({
       isAuthenticated: PropTypes.bool.isRequired,
     }).isRequired,
+    feed: PropTypes.shape({
+      data: PropTypes.arrayOf(PropTypes.shape).isRequired,
+    }).isRequired,
+    postsRequest: PropTypes.func.isRequired,
   };
 
-  state = {
-    post: {
-      user: 'Mariana Zucker',
-      createdAt: '2018-07-27 03:39:00',
-      content:
-        'Laboris laboris nulla est occaecat eu ex mollit mollit. Ut Lorem ut nostrud reprehenderit Lorem. Magna et consequat duis deserunt nostrud veniam dolor. Sunt est quis ut mollit laboris. Non veniam aute fugiat adipisicing culpa ipsum minim laboris ex aute est consectetur officia. Occaecat ex excepteur minim labore est pariatur incididunt anim aliquip reprehenderit sit proident sunt aliqua.',
-    },
-  };
+  componentDidMount() {
+    const { postsRequest } = this.props;
+    postsRequest();
+  }
 
   render() {
-    const { post } = this.state;
-    const { user } = this.props;
+    const { user, feed } = this.props;
     if (!user.isAuthenticated) {
       return <Redirect to="./" />;
     }
@@ -38,9 +38,8 @@ class Feed extends Component {
         <Header />
         <PostList>
           <PostEditor />
-          <Post data={post} />
-          <Post data={post} />
-          <Post data={post} />
+          <Post data={feed.data[0]} />
+          <Post data={feed.data[1]} />
         </PostList>
       </Container>
     );
@@ -49,9 +48,16 @@ class Feed extends Component {
 
 const mapStateToProps = state => ({
   user: state.user,
+  feed: state.feed,
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators(UserCreators, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators(
+  {
+    ...UserCreators,
+    ...FeedCreators,
+  },
+  dispatch,
+);
 
 export default connect(
   mapStateToProps,

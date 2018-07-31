@@ -13,7 +13,9 @@ const formatTime = time => moment(time)
 class Post extends Component {
   static propTypes = {
     data: PropTypes.shape({
-      user: PropTypes.string.isRequired,
+      user: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+      }).isRequired,
       createdAt: PropTypes.string.isRequired,
       content: PropTypes.string.isRequired,
     }).isRequired,
@@ -45,7 +47,7 @@ class Post extends Component {
     const { user, content } = data;
     return (
       <Container>
-        <PostHeader user={user} createdAt={createdAt} altCreatedAt={data.createdAt} />
+        <PostHeader user={user.name} createdAt={createdAt} altCreatedAt={data.createdAt} />
         <Content>
           {content}
         </Content>
