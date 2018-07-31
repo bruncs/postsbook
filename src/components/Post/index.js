@@ -6,9 +6,11 @@ import PostHeader from '../PostHeader';
 import PostFooter from '../PostFooter';
 import { Container, Content } from './styles';
 
-const formatTime = time => moment(time)
+const relativeTime = time => moment(time)
   .startOf('second')
   .fromNow();
+
+const absoluteTime = time => moment(time).format('DD/MM/YYYY hh:mm:ss');
 
 class Post extends Component {
   static propTypes = {
@@ -23,14 +25,16 @@ class Post extends Component {
 
   state = {
     interval: null,
-    createdAt: formatTime(this.props.data.createdAt),
+    relativeCreatedAt: relativeTime(this.props.data.createdAt),
+    absoluteCreatedAt: absoluteTime(this.props.data.createdAt),
   };
 
   componentDidMount() {
     const { data } = this.props;
     const interval = setInterval(() => {
       this.setState({
-        createdAt: formatTime(data.createdAt),
+        relativeCreatedAt: relativeTime(data.createdAt),
+        absoluteCreatedAt: absoluteTime(data.createdAt),
       });
     }, 1000);
     this.setState({ interval });
@@ -42,12 +46,16 @@ class Post extends Component {
   }
 
   render() {
-    const { createdAt } = this.state;
+    const { relativeCreatedAt, absoluteCreatedAt } = this.state;
     const { data } = this.props;
     const { user, content } = data;
     return (
       <Container>
-        <PostHeader user={user.name} createdAt={createdAt} altCreatedAt={data.createdAt} />
+        <PostHeader
+          user={user.name}
+          createdAt={relativeCreatedAt}
+          altCreatedAt={absoluteCreatedAt}
+        />
         <Content>
           {content}
         </Content>
