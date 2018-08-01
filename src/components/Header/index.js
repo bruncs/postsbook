@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -61,10 +61,20 @@ class Header extends Component {
               </Button>
             </Link>
             <Divider />
-            <Icon background={`#4267b2 url(${Iconset2}) no-repeat 0 -467px`} margin="0 -5px 0 0" />
-            <Counter>
-              {requestsCount}
-            </Counter>
+            {requestsCount > 0 ? (
+              <Fragment>
+                <Icon
+                  background={`#4267b2 url(${Iconset2}) no-repeat 0 -493px`}
+                  margin="0 -5px 0 0"
+                  opacity="1"
+                />
+                <Counter>
+                  {requestsCount}
+                </Counter>
+              </Fragment>
+            ) : (
+              <Icon background={`#4267b2 url(${Iconset2}) no-repeat 0 -467px`} />
+            )}
             <Divider />
             <Button name="signout" type="button" onClick={this.handleSignout}>
               Sair

@@ -98,7 +98,10 @@ export const Icon = styled.div`
   align-items: flex-start;
   height: 24px;
   width: 24px;
-  opacity: 0.6;
+  opacity: ${(props) => {
+    const { opacity } = props;
+    return opacity || 0.6;
+  }};
   cursor: pointer;
 
   background: ${(props) => {
