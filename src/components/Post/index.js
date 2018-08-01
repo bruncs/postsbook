@@ -52,7 +52,8 @@ class Post extends Component {
     return (
       <Container>
         <PostHeader
-          user={user.name}
+          userId={user._id}
+          userName={user.name}
           createdAt={relativeCreatedAt}
           altCreatedAt={absoluteCreatedAt}
         />
