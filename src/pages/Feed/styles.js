@@ -4,7 +4,7 @@ export const Container = styled.div`
   background: #e9ebee;
 `;
 
-export const PostList = styled.div`
+export const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;

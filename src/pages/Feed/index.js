@@ -7,10 +7,10 @@ import { bindActionCreators } from 'redux';
 import { Creators as UserCreators } from '../../store/ducks/user';
 import { Creators as FeedCreators } from '../../store/ducks/feed';
 
-import { Container, PostList } from './styles';
+import { Container, Content } from './styles';
 import Header from '../../components/Header';
 import PostEditor from '../../components/PostEditor';
-import Post from '../../components/Post';
+import PostList from '../../components/PostList';
 
 class Feed extends Component {
   static propTypes = {
@@ -23,9 +23,20 @@ class Feed extends Component {
     postsRequest: PropTypes.func.isRequired,
   };
 
+  state = {
+    interval: null,
+  };
+
   componentDidMount() {
     const { postsRequest } = this.props;
     postsRequest();
+    const interval = setInterval(() => postsRequest(), 10000);
+    this.setState({ interval });
+  }
+
+  componentWillUnmount() {
+    const { interval } = this.state;
+    clearInterval(interval);
   }
 
   render() {
@@ -36,11 +47,10 @@ class Feed extends Component {
     return (
       <Container>
         <Header />
-        <PostList>
+        <Content>
           <PostEditor />
-          <Post data={feed.data[0]} />
-          <Post data={feed.data[1]} />
-        </PostList>
+          <PostList posts={feed.data} />
+        </Content>
       </Container>
     );
   }
