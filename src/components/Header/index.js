@@ -19,6 +19,7 @@ import {
 import Logo from '../../assets/images/icons/whitelogo.png';
 import Iconset2 from '../../assets/images/icons/iconset2.png';
 import Avatar1 from '../../assets/images/avatars/01.png';
+import FriendRequestList from '../FriendRequestList';
 
 class Header extends Component {
   static propTypes = {
@@ -28,7 +29,14 @@ class Header extends Component {
     }).isRequired,
   };
 
-  state = {};
+  state = {
+    showRequests: false,
+  };
+
+  toggleShowRequests = () => {
+    const { showRequests } = this.state;
+    this.setState({ showRequests: !showRequests });
+  };
 
   handleSignout = () => {
     const { signoutRequest } = this.props;
@@ -37,6 +45,7 @@ class Header extends Component {
 
   render() {
     const { user } = this.props;
+    const { showRequests } = this.state;
     const firstName = user.data.user.name.split(' ')[0];
     const requestsCount = user.data.user.friendRequests.length;
     return (
@@ -63,10 +72,12 @@ class Header extends Component {
             <Divider />
             {requestsCount > 0 ? (
               <Fragment>
+                <FriendRequestList visible={showRequests} />
                 <Icon
                   background={`#4267b2 url(${Iconset2}) no-repeat 0 -493px`}
                   margin="0 -5px 0 0"
                   opacity="1"
+                  onClick={this.toggleShowRequests}
                 />
                 <Counter>
                   {requestsCount}
