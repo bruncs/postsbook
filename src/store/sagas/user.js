@@ -1,5 +1,6 @@
 import { call, put } from 'redux-saga/effects';
 import api from '../../services/api';
+import { localStoragePrefix } from '../../config';
 
 import { Creators as UserActions } from '../ducks/user';
 
@@ -8,8 +9,8 @@ export function* signup(action) {
     const response = yield call(api.post, '/signup', action.payload.data);
 
     // Stores user info at local storage
-    localStorage.setItem('token', response.data.token);
-    localStorage.setItem('email', response.data.user.email);
+    localStorage.setItem(`${localStoragePrefix}token`, response.data.token);
+    localStorage.setItem(`${localStoragePrefix}email`, response.data.user.email);
 
     // Calls success action
     yield put(UserActions.signupSuccess(response.data));
@@ -23,8 +24,8 @@ export function* signin(action) {
     const response = yield call(api.post, '/signin', action.payload.data);
 
     // Stores user info at local storage
-    localStorage.setItem('token', response.data.token);
-    localStorage.setItem('email', response.data.user.email);
+    localStorage.setItem(`${localStoragePrefix}token`, response.data.token);
+    localStorage.setItem(`${localStoragePrefix}email`, response.data.user.email);
 
     // Calls success action
     yield put(UserActions.signinSuccess(response.data));
@@ -36,8 +37,8 @@ export function* signin(action) {
 export function* signout() {
   try {
     // Clears user info
-    localStorage.removeItem('token');
-    localStorage.removeItem('email');
+    localStorage.removeItem(`${localStoragePrefix}token`);
+    localStorage.removeItem(`${localStoragePrefix}email`);
 
     // Calls success action
     yield put(UserActions.signoutSuccess());

@@ -28,7 +28,7 @@ class PostHeader extends Component {
           </ActionButton>
         </Container>
         <Container>
-          <CommentEditor id="comment-editor" />
+          <CommentEditor />
         </Container>
       </Fragment>
     );
