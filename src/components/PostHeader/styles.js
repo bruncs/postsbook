@@ -7,11 +7,8 @@ export const Container = styled.div`
   align-items: center;
 `;
 
-export const Avatar = styled.img`
-  width: 60px;
-  height: 60px;
-  border-radius: 30px;
-  margin-right: 15px;
+export const Text = styled.div`
+  margin-left: 15px;
 `;
 
 export const Name = styled.p`

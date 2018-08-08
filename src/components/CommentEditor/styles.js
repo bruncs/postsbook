@@ -8,13 +8,6 @@ export const Container = styled.div`
   }
 `;
 
-export const Avatar = styled.img`
-  width: 34px;
-  height: 34px;
-  border-radius: 15px;
-  margin-right: 10px;
-`;
-
 export const TextField = styled.div`
   border: 1px solid #ccc;
   border-radius: 17px;
@@ -24,4 +17,6 @@ export const TextField = styled.div`
   font-size: 14px;
   color: #000;
   padding: 10px;
+  cursor: text;
+  margin-left: 10px;
 `;

@@ -12,13 +12,13 @@ import {
   Button,
   ProfileButton,
   Divider,
-  Avatar,
   Icon,
   Counter,
+  Caption,
 } from './styles';
+import Avatar from '../Avatar';
 import Logo from '../../assets/images/icons/whitelogo.png';
 import Iconset2 from '../../assets/images/icons/iconset2.png';
-import Avatar1 from '../../assets/images/avatars/01.png';
 import FriendRequestList from '../FriendRequestList';
 
 class Header extends Component {
@@ -59,8 +59,8 @@ class Header extends Component {
           <GridColumn justifyContent="flex-end" alignItems="center">
             <Link to={`./profile?id=${user.data.user._id}`} style={{ textDecoration: 'none' }}>
               <ProfileButton>
-                <Avatar alt="" src={Avatar1} />
-                {firstName}
+                <Avatar size="mini" image={user.data.user.avatar.image} />
+                <Caption>{firstName}</Caption>
               </ProfileButton>
             </Link>
             <Divider />
@@ -79,9 +79,7 @@ class Header extends Component {
                   opacity="1"
                   onClick={this.toggleShowRequests}
                 />
-                <Counter>
-                  {requestsCount}
-                </Counter>
+                <Counter>{requestsCount}</Counter>
               </Fragment>
             ) : (
               <Icon background={`#4267b2 url(${Iconset2}) no-repeat 0 -467px`} />

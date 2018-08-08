@@ -17,6 +17,9 @@ class Post extends Component {
     data: PropTypes.shape({
       user: PropTypes.shape({
         name: PropTypes.string.isRequired,
+        avatar: PropTypes.shape({
+          image: PropTypes.shape(),
+        }),
       }).isRequired,
       createdAt: PropTypes.string.isRequired,
       content: PropTypes.string.isRequired,
@@ -54,12 +57,11 @@ class Post extends Component {
         <PostHeader
           userId={user._id}
           userName={user.name}
+          userAvatar={user.avatar.image}
           createdAt={relativeCreatedAt}
           altCreatedAt={absoluteCreatedAt}
         />
-        <Content>
-          {content}
-        </Content>
+        <Content>{content}</Content>
         <PostFooter />
       </Container>
     );

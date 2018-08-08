@@ -62,10 +62,10 @@ export const Button = styled.button`
 
 export const ProfileButton = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   height: 28px;
-  padding: 0px 10px 0 8px;
+  padding: 0px 8px 0 8px;
   border: none;
   border-radius: 2px;
   font-size: 12px;
@@ -83,13 +83,6 @@ export const Divider = styled.div`
   height: 20px;
   background-color: #3b5ca0;
   margin: 0 8px;
-`;
-
-export const Avatar = styled.img`
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  margin: 0 8px 0 0;
 `;
 
 export const Icon = styled.div`
@@ -128,4 +121,8 @@ export const Counter = styled.div`
   padding: 1px 2px;
   margin: -8px 0 0 0;
   z-index: 2;
+`;
+
+export const Caption = styled.p`
+  margin-left: 8px;
 `;
