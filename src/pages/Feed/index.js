@@ -48,8 +48,8 @@ class Feed extends Component {
       <Container>
         <Header />
         <Content>
-          <PostEditor />
-          <PostList posts={feed.data} />
+          <PostEditor user={user} />
+          <PostList posts={feed.data} user={user} />
         </Content>
       </Container>
     );

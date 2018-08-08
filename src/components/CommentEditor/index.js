@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import Avatar from '../Avatar';
 import { Container, TextField } from './styles';
 
 class CommentEditor extends Component {
+  static propTypes = {
+    userAvatar: PropTypes.shape().isRequired,
+  };
+
   state = {};
 
   // Paste as plain text into TextField
@@ -13,9 +18,10 @@ class CommentEditor extends Component {
   };
 
   render() {
+    const { userAvatar } = this.props;
     return (
       <Container>
-        <Avatar size="small" />
+        <Avatar size="small" image={userAvatar} />
         <TextField
           contentEditable="true"
           onPaste={this.onPaste}

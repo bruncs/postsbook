@@ -1,10 +1,24 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import { Container, Grid, TextField } from './styles';
 import Avatar from '../Avatar';
 import PostEditorFooter from '../PostEditorFooter';
 
 class PostEditor extends Component {
+  static propTypes = {
+    user: PropTypes.shape({
+      data: PropTypes.shape({
+        user: PropTypes.shape({
+          name: PropTypes.string.isRequired,
+          avatar: PropTypes.shape({
+            image: PropTypes.shape(),
+          }),
+        }),
+      }),
+    }).isRequired,
+  };
+
   state = {};
 
   // Paste as plain text into TextField
@@ -15,14 +29,16 @@ class PostEditor extends Component {
   };
 
   render() {
+    const { user } = this.props;
+    const firstName = user.data.user.name.split(' ')[0];
     return (
       <Container>
         <Grid>
-          <Avatar />
+          <Avatar image={user.data.user.avatar.image} />
           <TextField
             contentEditable="true"
             suppressContentEditableWarning
-            placeholder="No que você está pensando?"
+            placeholder={`No que você está pensando, ${firstName}?`}
             onPaste={this.onPaste}
           />
         </Grid>

@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 
 import { Container, ActionButton, Icon } from './styles';
 import CommentEditor from '../CommentEditor';
@@ -8,9 +9,14 @@ import CommentIcon from '../../assets/images/icons/comment.png';
 import ShareIcon from '../../assets/images/icons/share.png';
 
 class PostHeader extends Component {
+  static propTypes = {
+    userAvatar: PropTypes.shape().isRequired,
+  };
+
   state = {};
 
   render() {
+    const { userAvatar } = this.props;
     return (
       <Fragment>
         <Container>
@@ -28,7 +34,7 @@ class PostHeader extends Component {
           </ActionButton>
         </Container>
         <Container>
-          <CommentEditor />
+          <CommentEditor userAvatar={userAvatar} />
         </Container>
       </Fragment>
     );
