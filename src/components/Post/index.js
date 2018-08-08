@@ -24,13 +24,19 @@ class Post extends Component {
       createdAt: PropTypes.string.isRequired,
       content: PropTypes.string.isRequired,
     }).isRequired,
+    user: PropTypes.shape().isRequired,
   };
 
-  state = {
-    interval: null,
-    relativeCreatedAt: relativeTime(this.props.data.createdAt),
-    absoluteCreatedAt: absoluteTime(this.props.data.createdAt),
-  };
+  constructor(props) {
+    super(props);
+    const { data } = this.props;
+
+    this.state = {
+      interval: null,
+      relativeCreatedAt: relativeTime(data.createdAt),
+      absoluteCreatedAt: absoluteTime(data.createdAt),
+    };
+  }
 
   componentDidMount() {
     const { data } = this.props;
@@ -50,19 +56,19 @@ class Post extends Component {
 
   render() {
     const { relativeCreatedAt, absoluteCreatedAt } = this.state;
-    const { data } = this.props;
-    const { user, content } = data;
+    const { data, user } = this.props;
+    const { content } = data;
     return (
       <Container>
         <PostHeader
-          userId={user._id}
-          userName={user.name}
-          userAvatar={user.avatar.image}
+          userId={data.user._id}
+          userName={data.user.name}
+          userAvatar={data.user.avatar.image}
           createdAt={relativeCreatedAt}
           altCreatedAt={absoluteCreatedAt}
         />
         <Content>{content}</Content>
-        <PostFooter />
+        <PostFooter userAvatar={user.data.user.avatar.image} />
       </Container>
     );
   }
