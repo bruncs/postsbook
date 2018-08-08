@@ -1,44 +1,30 @@
 import React, { Component } from 'react';
 
-import {
-  Container, Grid, Avatar, TextArea,
-} from './styles';
+import { Container, Grid, TextField } from './styles';
+import Avatar from '../Avatar';
 import PostEditorFooter from '../PostEditorFooter';
 
-import Avatar1 from '../../assets/images/avatars/01.png';
-
 class PostEditor extends Component {
-  state = {
-    content: '',
-    placeholder: 'No que você está pensando?',
-    editing: false,
-  };
+  state = {};
 
-  handleEditorFocus = () => {
-    this.setState({ editing: true });
-  };
-
-  handleEditorBlur = () => {
-    const content = document.getElementById('textarea').textContent;
-    this.setState({ content, editing: false });
+  // Paste as plain text into TextField
+  onPaste = (e) => {
+    e.preventDefault();
+    const text = e.clipboardData.getData('text');
+    document.execCommand('insertText', false, text);
   };
 
   render() {
-    const { content, placeholder, editing } = this.state;
     return (
       <Container>
         <Grid>
-          <Avatar src={Avatar1} alt="" />
-
-          <TextArea
+          <Avatar />
+          <TextField
             contentEditable="true"
-            onFocus={this.handleEditorFocus}
-            onBlur={this.handleEditorBlur}
             suppressContentEditableWarning
-            id="textarea"
-          >
-            {!editing && content.length < 1 ? placeholder : content}
-          </TextArea>
+            placeholder="No que você está pensando?"
+            onPaste={this.onPaste}
+          />
         </Grid>
         <PostEditorFooter />
       </Container>

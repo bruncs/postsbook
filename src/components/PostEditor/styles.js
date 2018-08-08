@@ -7,25 +7,23 @@ export const Container = styled.div`
   border-radius: 5px;
   background: #fff;
   margin-bottom: 30px;
+  [contenteditable='true']:empty:before {
+    content: attr(placeholder);
+    color: #666;
+  }
 `;
 
 export const Grid = styled.div`
   display: flex;
 `;
 
-export const Avatar = styled.img`
-  width: 60px;
-  height: 60px;
-  border-radius: 30px;
-  margin-right: 15px;
-`;
-
-export const TextArea = styled.div`
+export const TextField = styled.div`
   display: block;
   width: 570px;
   min-height: 20px;
   font-size: 20px;
-  color: #666;
-  display: flex;
-  align-items: center;
+  color: #000;
+  padding: 10px;
+  cursor: text;
+  margin-left: 10px;
 `;

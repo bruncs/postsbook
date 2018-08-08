@@ -1,21 +1,26 @@
 import React, { Component } from 'react';
-import { Container, Avatar, TextField } from './styles';
-
-import Avatar1 from '../../assets/images/avatars/01.png';
+import Avatar from '../Avatar';
+import { Container, TextField } from './styles';
 
 class CommentEditor extends Component {
   state = {};
 
+  // Paste as plain text into TextField
+  onPaste = (e) => {
+    e.preventDefault();
+    const text = e.clipboardData.getData('text');
+    document.execCommand('insertText', false, text);
+  };
+
   render() {
     return (
       <Container>
-        <Avatar src={Avatar1} />
+        <Avatar size="small" />
         <TextField
           contentEditable="true"
-          onFocus={this.handleEditorFocus}
-          onBlur={this.handleEditorBlur}
+          onPaste={this.onPaste}
           suppressContentEditableWarning
-          placeholder="Escreva seu comentário..."
+          placeholder="Escreva um comentário..."
         />
       </Container>
     );
