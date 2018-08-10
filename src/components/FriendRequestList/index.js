@@ -29,7 +29,7 @@ class FriendRequestList extends Component {
     const { visible, friendship } = this.props;
     return (
       <Container visible={visible}>
-        {friendship.data.map(i => <FriendRequest key={i._id} name={i.name} />)}
+        {friendship.data.map(i => <FriendRequest key={i._id} id={i._id} name={i.name} />)}
       </Container>
     );
   }

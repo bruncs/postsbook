@@ -5,3 +5,8 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
 `;
+
+export const Name = styled.p`
+  margin-left: 8px;
+  font-size: 12px;
+`;
