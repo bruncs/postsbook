@@ -45,7 +45,7 @@ class Feed extends Component {
       return <Redirect to="./" />;
     }
     return (
-      <Container>
+      <Container id="container">
         <Header />
         <Content>
           <PostEditor user={user} />

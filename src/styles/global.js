@@ -13,4 +13,8 @@ injectGlobal`
     text-rendering: optimizeLegibility !important;
     -webkit-font-smoothing: antialiased !important;
   }
+
+  div #container {
+    background-color: #e9ebee;
+  }
 `;
