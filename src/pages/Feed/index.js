@@ -22,7 +22,6 @@ class Feed extends Component {
       data: PropTypes.arrayOf(PropTypes.shape).isRequired,
     }).isRequired,
     postsRequest: PropTypes.func.isRequired,
-    listReqsRequest: PropTypes.func.isRequired,
   };
 
   state = {
@@ -30,8 +29,7 @@ class Feed extends Component {
   };
 
   componentDidMount() {
-    const { postsRequest, listReqsRequest } = this.props;
-    listReqsRequest();
+    const { postsRequest } = this.props;
     postsRequest();
     const interval = setInterval(() => postsRequest(), 10000);
     this.setState({ interval });

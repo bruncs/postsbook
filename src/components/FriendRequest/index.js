@@ -8,15 +8,28 @@ class FriendRequest extends Component {
   static propTypes = {
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
+    avatar: PropTypes.shape({
+      image: PropTypes.shape(),
+    }),
+  };
+
+  static defaultProps = {
+    avatar: {
+      image: {
+        type: 'Buffer',
+        data: [],
+        createdAt: '',
+      },
+    },
   };
 
   state = {};
 
   render() {
-    const { id, name } = this.props;
+    const { id, name, avatar } = this.props;
     return (
       <Container>
-        <Avatar size="medium" />
+        <Avatar size="medium" image={avatar.image} />
         <Link to={`./profile?id=${id}`}>
           <Name>{name}</Name>
         </Link>

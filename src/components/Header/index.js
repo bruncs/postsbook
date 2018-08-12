@@ -29,11 +29,17 @@ class Header extends Component {
       isAuthenticated: PropTypes.bool.isRequired,
     }).isRequired,
     friendship: PropTypes.shape().isRequired,
+    listReqsRequest: PropTypes.func.isRequired,
   };
 
   state = {
     showRequests: false,
   };
+
+  componentDidMount() {
+    const { listReqsRequest } = this.props;
+    listReqsRequest();
+  }
 
   toggleShowRequests = () => {
     const { showRequests } = this.state;

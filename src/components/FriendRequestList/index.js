@@ -11,7 +11,6 @@ class FriendRequestList extends Component {
   static propTypes = {
     visible: PropTypes.bool,
     friendship: PropTypes.shape().isRequired,
-    listReqsRequest: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
@@ -20,16 +19,13 @@ class FriendRequestList extends Component {
 
   state = {};
 
-  componentDidMount() {
-    const { listReqsRequest } = this.props;
-    listReqsRequest();
-  }
-
   render() {
     const { visible, friendship } = this.props;
     return (
       <Container visible={visible}>
-        {friendship.data.map(i => <FriendRequest key={i._id} id={i._id} name={i.name} />)}
+        {friendship.data.map(i => (
+          <FriendRequest key={i._id} id={i._id} name={i.name} avatar={i.avatar} />
+        ))}
       </Container>
     );
   }
