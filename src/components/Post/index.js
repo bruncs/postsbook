@@ -68,7 +68,7 @@ class Post extends Component {
           altCreatedAt={absoluteCreatedAt}
         />
         <Content>{content}</Content>
-        <PostFooter userAvatar={user.data.user.avatar.image} />
+        <PostFooter userAvatar={user.data.avatar.image} />
       </Container>
     );
   }

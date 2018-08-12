@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Creators as UserCreators } from '../../store/ducks/user';
 import { Creators as FeedCreators } from '../../store/ducks/feed';
+import { Creators as FriendshipCreators } from '../../store/ducks/friendship';
 
 import { Container, Content } from './styles';
 import Header from '../../components/Header';
@@ -21,6 +22,7 @@ class Feed extends Component {
       data: PropTypes.arrayOf(PropTypes.shape).isRequired,
     }).isRequired,
     postsRequest: PropTypes.func.isRequired,
+    listReqsRequest: PropTypes.func.isRequired,
   };
 
   state = {
@@ -28,7 +30,8 @@ class Feed extends Component {
   };
 
   componentDidMount() {
-    const { postsRequest } = this.props;
+    const { postsRequest, listReqsRequest } = this.props;
+    listReqsRequest();
     postsRequest();
     const interval = setInterval(() => postsRequest(), 10000);
     this.setState({ interval });
@@ -59,12 +62,14 @@ class Feed extends Component {
 const mapStateToProps = state => ({
   user: state.user,
   feed: state.feed,
+  friendship: state.friendship,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(
   {
     ...UserCreators,
     ...FeedCreators,
+    ...FriendshipCreators,
   },
   dispatch,
 );

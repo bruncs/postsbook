@@ -9,11 +9,9 @@ class PostEditor extends Component {
   static propTypes = {
     user: PropTypes.shape({
       data: PropTypes.shape({
-        user: PropTypes.shape({
-          name: PropTypes.string.isRequired,
-          avatar: PropTypes.shape({
-            image: PropTypes.shape(),
-          }),
+        name: PropTypes.string.isRequired,
+        avatar: PropTypes.shape({
+          image: PropTypes.shape(),
         }),
       }),
     }).isRequired,
@@ -30,11 +28,11 @@ class PostEditor extends Component {
 
   render() {
     const { user } = this.props;
-    const firstName = user.data.user.name.split(' ')[0];
+    const firstName = user.data.name.split(' ')[0];
     return (
       <Container>
         <Grid>
-          <Avatar image={user.data.user.avatar.image} />
+          <Avatar image={user.data.avatar.image} />
           <TextField
             contentEditable="true"
             suppressContentEditableWarning

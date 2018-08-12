@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Creators as UserCreators } from '../../store/ducks/user';
+import { Creators as FriendshipCreators } from '../../store/ducks/friendship';
 import {
   Container,
   Grid,
@@ -27,6 +28,7 @@ class Header extends Component {
     user: PropTypes.shape({
       isAuthenticated: PropTypes.bool.isRequired,
     }).isRequired,
+    friendship: PropTypes.shape().isRequired,
   };
 
   state = {
@@ -44,10 +46,10 @@ class Header extends Component {
   };
 
   render() {
-    const { user } = this.props;
+    const { user, friendship } = this.props;
     const { showRequests } = this.state;
-    const firstName = user.data.user.name.split(' ')[0];
-    const requestsCount = user.data.user.friendRequests.length;
+    const firstName = user.data.name.split(' ')[0];
+    const requestsCount = friendship.data.length;
     return (
       <Container>
         <Grid>
@@ -57,9 +59,9 @@ class Header extends Component {
             </Link>
           </GridColumn>
           <GridColumn justifyContent="flex-end" alignItems="center">
-            <Link to={`./profile?id=${user.data.user._id}`} style={{ textDecoration: 'none' }}>
+            <Link to={`./profile?id=${user.data._id}`} style={{ textDecoration: 'none' }}>
               <ProfileButton>
-                <Avatar size="mini" image={user.data.user.avatar.image} />
+                <Avatar size="mini" image={user.data.avatar.image} />
                 <Caption>{firstName}</Caption>
               </ProfileButton>
             </Link>
@@ -97,9 +99,16 @@ class Header extends Component {
 
 const mapStateToProps = state => ({
   user: state.user,
+  friendship: state.friendship,
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators(UserCreators, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators(
+  {
+    ...UserCreators,
+    ...FriendshipCreators,
+  },
+  dispatch,
+);
 
 export default connect(
   mapStateToProps,

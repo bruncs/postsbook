@@ -25,7 +25,7 @@ export function* signin(action) {
 
     // Stores user info at local storage
     localStorage.setItem(`${localStoragePrefix}token`, response.data.token);
-    localStorage.setItem(`${localStoragePrefix}email`, response.data.user.email);
+    localStorage.setItem(`${localStoragePrefix}email`, response.data.email);
 
     // Calls success action
     yield put(UserActions.signinSuccess(response.data));
