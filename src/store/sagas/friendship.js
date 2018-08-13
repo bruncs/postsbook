@@ -4,7 +4,7 @@ import { localStoragePrefix } from '../../config';
 
 import { Creators as FriendshipActions } from '../ducks/friendship';
 
-export function* getList() {
+export function* getReqsList() {
   try {
     const token = localStorage.getItem(`${localStoragePrefix}token`);
     const response = yield call(api.get, '/friends/requests', {
