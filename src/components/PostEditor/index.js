@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Container, Grid, TextField } from './styles';
+import {
+  Container, Grid, TextField, Footer, Button,
+} from './styles';
 import Avatar from '../Avatar';
-import PostEditorFooter from '../PostEditorFooter';
 
 class PostEditor extends Component {
   static propTypes = {
@@ -17,7 +18,9 @@ class PostEditor extends Component {
     }).isRequired,
   };
 
-  state = {};
+  state = {
+    content: 'Brunao',
+  };
 
   // Paste as plain text into TextField
   onPaste = (e) => {
@@ -26,21 +29,34 @@ class PostEditor extends Component {
     document.execCommand('insertText', false, text);
   };
 
+  handleSubmit = () => {};
+
+  handleChange = e => this.setState({ [e.target.name]: 'Loucura' });
+
   render() {
     const { user } = this.props;
+    const { content } = this.state;
     const firstName = user.data.name.split(' ')[0];
     return (
       <Container>
-        <Grid>
-          <Avatar image={user.data.avatar.image} />
-          <TextField
-            contentEditable="true"
-            suppressContentEditableWarning
-            placeholder={`No que você está pensando, ${firstName}?`}
-            onPaste={this.onPaste}
-          />
-        </Grid>
-        <PostEditorFooter />
+        <form onSubmit={this.handleSubmit}>
+          <Grid>
+            <Avatar image={user.data.avatar.image} />
+            <TextField
+              name="content"
+              contentEditable="true"
+              suppressContentEditableWarning
+              placeholder={`No que você está pensando, ${firstName}?`}
+              onChange={this.handleChange}
+              onPaste={this.onPaste}
+            >
+              {content}
+            </TextField>
+          </Grid>
+          <Footer>
+            <Button type="submit">Publicar</Button>
+          </Footer>
+        </form>
       </Container>
     );
   }

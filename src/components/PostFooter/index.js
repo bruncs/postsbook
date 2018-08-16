@@ -8,7 +8,7 @@ import LikeIcon from '../../assets/images/icons/like.png';
 import CommentIcon from '../../assets/images/icons/comment.png';
 import ShareIcon from '../../assets/images/icons/share.png';
 
-class PostHeader extends Component {
+class PostFooter extends Component {
   static propTypes = {
     userAvatar: PropTypes.shape().isRequired,
   };
@@ -41,4 +41,4 @@ class PostHeader extends Component {
   }
 }
 
-export default PostHeader;
+export default PostFooter;
