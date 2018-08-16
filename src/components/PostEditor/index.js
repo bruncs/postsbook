@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Creators as PostActions } from '../../store/ducks/post';
+
 import {
   Container, Grid, TextField, Footer, Button,
 } from './styles';
@@ -16,10 +20,7 @@ class PostEditor extends Component {
         }),
       }),
     }).isRequired,
-  };
-
-  state = {
-    content: 'Brunao',
+    publishRequest: PropTypes.func.isRequired,
   };
 
   // Paste as plain text into TextField
@@ -29,37 +30,45 @@ class PostEditor extends Component {
     document.execCommand('insertText', false, text);
   };
 
-  handleSubmit = () => {};
-
-  handleChange = e => this.setState({ [e.target.name]: 'Loucura' });
+  handleSubmit = () => {
+    const { publishRequest } = this.props;
+    const textField = document.getElementById('text-field');
+    publishRequest({ content: textField.textContent });
+    textField.textContent = '';
+  };
 
   render() {
     const { user } = this.props;
-    const { content } = this.state;
     const firstName = user.data.name.split(' ')[0];
     return (
       <Container>
-        <form onSubmit={this.handleSubmit}>
-          <Grid>
-            <Avatar image={user.data.avatar.image} />
-            <TextField
-              name="content"
-              contentEditable="true"
-              suppressContentEditableWarning
-              placeholder={`No que você está pensando, ${firstName}?`}
-              onChange={this.handleChange}
-              onPaste={this.onPaste}
-            >
-              {content}
-            </TextField>
-          </Grid>
-          <Footer>
-            <Button type="submit">Publicar</Button>
-          </Footer>
-        </form>
+        <Grid>
+          <Avatar image={user.data.avatar.image} />
+          <TextField
+            id="text-field"
+            contentEditable="true"
+            suppressContentEditableWarning
+            placeholder={`No que você está pensando, ${firstName}?`}
+            onPaste={this.onPaste}
+          />
+        </Grid>
+        <Footer>
+          <Button type="button" onClick={this.handleSubmit}>
+            Publicar
+          </Button>
+        </Footer>
       </Container>
     );
   }
 }
 
-export default PostEditor;
+const mapStateToProps = state => ({
+  post: state.post,
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators(PostActions, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(PostEditor);
