@@ -6,6 +6,19 @@ export const Container = styled.div`
   align-items: center;
 `;
 
+export const Grid = styled.div`
+  display: flex;
+`;
+
+export const GridColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: ${(props) => {
+    const { padding } = props;
+    return padding || '0px';
+  }};
+`;
+
 export const ButtonGroup = styled.div`
   height: 30px;
   display: flex;
@@ -13,7 +26,6 @@ export const ButtonGroup = styled.div`
 `;
 
 export const Name = styled.p`
-  margin-left: 8px;
   font-size: 12px;
   text-decoration: none;
   font-weight: bold;
@@ -25,6 +37,8 @@ export const Name = styled.p`
 `;
 
 export const AcceptButton = styled.button`
+  margin-right: 5px;
+
   background-color: #4267b2;
   color: #fff;
 

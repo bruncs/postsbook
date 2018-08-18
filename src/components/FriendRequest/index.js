@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import {
-  Container, Name, ButtonGroup, AcceptButton, RejectButton,
+  Container,
+  Grid,
+  GridColumn,
+  Name,
+  ButtonGroup,
+  AcceptButton,
+  RejectButton,
 } from './styles';
 import Avatar from '../Avatar';
 
@@ -31,14 +37,20 @@ class FriendRequest extends Component {
     const { id, name, avatar } = this.props;
     return (
       <Container>
-        <Avatar size="medium" image={avatar.image} />
-        <Link to={`./profile?id=${id}`} style={{ 'text-decoration': 'none' }}>
-          <Name>{name}</Name>
-        </Link>
-        <ButtonGroup>
-          <AcceptButton>Confirmar</AcceptButton>
-          <RejectButton>Excluir</RejectButton>
-        </ButtonGroup>
+        <Grid>
+          <GridColumn>
+            <Avatar size="medium" image={avatar.image} />
+          </GridColumn>
+          <GridColumn padding="0 0 0 10px">
+            <Link to={`./profile?id=${id}`} style={{ textDecoration: 'none' }}>
+              <Name>{name}</Name>
+            </Link>
+            <ButtonGroup>
+              <AcceptButton>Confirmar</AcceptButton>
+              <RejectButton>Excluir</RejectButton>
+            </ButtonGroup>
+          </GridColumn>
+        </Grid>
       </Container>
     );
   }
