@@ -23,6 +23,7 @@ class Post extends Component {
       }).isRequired,
       createdAt: PropTypes.string.isRequired,
       content: PropTypes.string.isRequired,
+      likes: PropTypes.arrayOf(PropTypes.string).isRequired,
     }).isRequired,
     user: PropTypes.shape().isRequired,
   };
@@ -58,6 +59,7 @@ class Post extends Component {
     const { relativeCreatedAt, absoluteCreatedAt } = this.state;
     const { data, user } = this.props;
     const { content } = data;
+    const numberOfLikes = data.likes.length;
     return (
       <Container>
         <PostHeader
@@ -68,7 +70,7 @@ class Post extends Component {
           altCreatedAt={absoluteCreatedAt}
         />
         <Content>{content}</Content>
-        <PostFooter userAvatar={user.data.avatar.image} />
+        <PostFooter userAvatar={user.data.avatar.image} numberOfLikes={numberOfLikes} />
       </Container>
     );
   }
