@@ -6,6 +6,7 @@ export const Container = styled.div`
     content: attr(placeholder);
     color: #666;
   }
+  margin-top: 10px;
 `;
 
 export const TextField = styled.div`
