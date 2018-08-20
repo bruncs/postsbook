@@ -15,6 +15,7 @@ const absoluteTime = time => moment(time).format('DD/MM/YYYY hh:mm:ss');
 class Post extends Component {
   static propTypes = {
     data: PropTypes.shape({
+      _id: PropTypes.string.isRequired,
       user: PropTypes.shape({
         name: PropTypes.string.isRequired,
         avatar: PropTypes.shape({
@@ -70,7 +71,11 @@ class Post extends Component {
           altCreatedAt={absoluteCreatedAt}
         />
         <Content>{content}</Content>
-        <PostFooter userAvatar={user.data.avatar.image} numberOfLikes={numberOfLikes} />
+        <PostFooter
+          postId={data._id}
+          userAvatar={user.data.avatar.image}
+          numberOfLikes={numberOfLikes}
+        />
       </Container>
     );
   }

@@ -4,11 +4,13 @@ import { Types as UserTypes } from '../ducks/user';
 import { Types as FeedTypes } from '../ducks/feed';
 import { Types as FriendshipTypes } from '../ducks/friendship';
 import { Types as PostTypes } from '../ducks/post';
+import { Types as LikeTypes } from '../ducks/like';
 
 import { signup, signin, signout } from './user';
 import { getPosts } from './feed';
 import { getReqsList } from './friendship';
 import { publish } from './post';
+import { toggle } from './like';
 
 export default function* rootSaga() {
   yield all([
@@ -18,5 +20,6 @@ export default function* rootSaga() {
     takeLatest(FeedTypes.POSTS_REQUEST, getPosts),
     takeLatest(FriendshipTypes.LISTREQS_REQUEST, getReqsList),
     takeLatest(PostTypes.PUBLISH_REQUEST, publish),
+    takeLatest(LikeTypes.TOGGLE_REQUEST, toggle),
   ]);
 }
