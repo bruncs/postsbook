@@ -61,6 +61,7 @@ class Post extends Component {
     const { data, user } = this.props;
     const { content } = data;
     const numberOfLikes = data.likes.length;
+    const liked = data.likes.indexOf(user.data.id) !== -1;
     return (
       <Container>
         <PostHeader
@@ -75,6 +76,7 @@ class Post extends Component {
           postId={data._id}
           userAvatar={user.data.avatar.image}
           numberOfLikes={numberOfLikes}
+          liked={liked}
         />
       </Container>
     );

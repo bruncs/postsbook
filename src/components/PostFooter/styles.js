@@ -14,7 +14,7 @@ export const ActionButton = styled.button`
   align-items: center;
   width: 200px;
   height: 30px;
-  background-color: #fff;
+  background-color: transparent;
   border: none;
   color: #999;
   font-size: 14px;
@@ -31,8 +31,31 @@ export const ActionButton = styled.button`
   }
 `;
 
+export const LikeButton = ActionButton.extend`
+  color: ${(props) => {
+    const { liked } = props;
+    return liked ? '#3578E5' : '#999';
+  }};
+`;
+
 export const Icon = styled.img`
   width: 18px;
-  height: 18px;
-  margin-right: 5px;
+  height: 18px
+  margin-right: 4px;
+`;
+
+export const LikeIcon = styled.div`
+  width: 18px;
+  height: 18px
+  margin-right: 4px;
+  background-image: ${(props) => {
+    const { backgroundImage } = props;
+    return backgroundImage || 'none';
+  }};
+  background-position: ${(props) => {
+    const { liked } = props;
+    return liked ? '0 -152px' : '0 -171px';
+  }};
+  background-repeat: no-repeat;
+  background-size: auto;
 `;

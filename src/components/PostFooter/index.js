@@ -5,11 +5,14 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Creators as LikeCreators } from '../../store/ducks/like';
 
-import { Container, ActionButton, Icon } from './styles';
+import {
+  Container, ActionButton, LikeButton, Icon, LikeIcon,
+} from './styles';
 import Reactions from '../Reactions';
 import CommentEditor from '../CommentEditor';
 
-import LikeIcon from '../../assets/images/icons/like.png';
+import IconSet from '../../assets/images/icons/iconset.png';
+
 import CommentIcon from '../../assets/images/icons/comment.png';
 import ShareIcon from '../../assets/images/icons/share.png';
 
@@ -19,6 +22,7 @@ class PostFooter extends Component {
     userAvatar: PropTypes.shape().isRequired,
     numberOfLikes: PropTypes.number.isRequired,
     likeRequest: PropTypes.func.isRequired,
+    liked: PropTypes.bool.isRequired,
   };
 
   state = {};
@@ -29,15 +33,15 @@ class PostFooter extends Component {
   };
 
   render() {
-    const { userAvatar, numberOfLikes } = this.props;
+    const { userAvatar, numberOfLikes, liked } = this.props;
     return (
       <Fragment>
         {numberOfLikes > 0 && <Reactions numberOfLikes={numberOfLikes} />}
         <Container>
-          <ActionButton onClick={this.handleLike}>
-            <Icon src={LikeIcon} />
+          <LikeButton onClick={this.handleLike} liked={liked}>
+            <LikeIcon backgroundImage={`url(${IconSet})`} liked={liked} />
             Curtir
-          </ActionButton>
+          </LikeButton>
           <ActionButton>
             <Icon src={CommentIcon} />
             Comentar
