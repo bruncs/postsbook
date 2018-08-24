@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Avatar from '../Avatar';
 import {
-  Container, Text, Name, Time,
+  Container, Grid, GridColumn, Text, Name, Time, OptionsButton,
 } from './styles';
+import IconSet from '../../assets/images/icons/iconset5.png';
 
 const PostHeader = (props) => {
   const {
@@ -12,15 +13,22 @@ const PostHeader = (props) => {
   } = props;
   return (
     <Container>
-      <Link to={`./profile?id=${userId}`}>
-        <Avatar userId={userId} image={userAvatar} />
-      </Link>
-      <Text>
-        <Link to={`./profile?id=${userId}`} style={{ textDecoration: 'none' }}>
-          <Name>{userName}</Name>
-        </Link>
-        <Time title={altCreatedAt}>{createdAt}</Time>
-      </Text>
+      <Grid>
+        <GridColumn justifyContent="flex-start" alignItems="center">
+          <Link to={`./profile?id=${userId}`}>
+            <Avatar userId={userId} image={userAvatar} />
+          </Link>
+          <Text>
+            <Link to={`./profile?id=${userId}`} style={{ textDecoration: 'none' }}>
+              <Name>{userName}</Name>
+            </Link>
+            <Time title={altCreatedAt}>{createdAt}</Time>
+          </Text>
+        </GridColumn>
+        <GridColumn justifyContent="flex-end">
+          <OptionsButton backgroundImage={`url(${IconSet})`} />
+        </GridColumn>
+      </Grid>
     </Container>
   );
 };
