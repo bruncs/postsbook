@@ -23,6 +23,10 @@ export const GridColumn = styled.div`
     const { justifyContent } = props;
     return justifyContent;
   }};
+  flex-direction: ${(props) => {
+    const { flexDirection } = props;
+    return flexDirection;
+  }};
   width: ${(props) => {
     const { width } = props;
     return width;
@@ -60,4 +64,17 @@ export const OptionsButton = styled.button`
   &:hover {
     background-position: -21px -123px;
   }
+`;
+
+export const Options = styled.div`
+  width: 246px;
+  min-height: 40px;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+  visibility: ${(props) => {
+    const { visible } = props;
+    return visible ? 'visible' : 'hidden';
+  }};
 `;
