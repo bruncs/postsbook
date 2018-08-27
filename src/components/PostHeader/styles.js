@@ -66,9 +66,11 @@ export const OptionsButton = styled.button`
   }
 `;
 
-export const Options = styled.div`
+export const Options = styled.ul`
+  display: flex;
+  flex: 1;
   width: 246px;
-  min-height: 40px;
+  padding: 5px 0;
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 3px;
@@ -77,4 +79,20 @@ export const Options = styled.div`
     const { visible } = props;
     return visible ? 'visible' : 'hidden';
   }};
+`;
+
+export const Item = styled.li`
+  display: flex;
+  flex: 1;
+  align-items: center;
+  height: 40px;
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #4267b2;
+    border-color: #29487d;
+    color: #fff;
+  }
 `;

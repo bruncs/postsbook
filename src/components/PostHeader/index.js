@@ -3,7 +3,15 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Avatar from '../Avatar';
 import {
-  Container, Grid, GridColumn, Text, Name, Time, OptionsButton, Options,
+  Container,
+  Grid,
+  GridColumn,
+  Text,
+  Name,
+  Time,
+  OptionsButton,
+  Options,
+  Item,
 } from './styles';
 import IconSet from '../../assets/images/icons/iconset5.png';
 
@@ -46,9 +54,11 @@ class PostHeader extends Component {
               <Time title={altCreatedAt}>{createdAt}</Time>
             </Text>
           </GridColumn>
-          <GridColumn justifyContent="flex-end" flexDirection="row-reverse">
+          <GridColumn justifyContent="flex-start" alignItems="flex-end" flexDirection="column">
             <OptionsButton backgroundImage={`url(${IconSet})`} onClick={this.handleOptionsClick} />
-            <Options visible={optionsVisible} />
+            <Options visible={optionsVisible}>
+              <Item>Excluir publicação</Item>
+            </Options>
           </GridColumn>
         </Grid>
       </Container>
