@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import Avatar from '../Avatar';
 import {
   Container,
@@ -15,13 +17,17 @@ import {
 } from './styles';
 import IconSet from '../../assets/images/icons/iconset5.png';
 
+import { Creators as PostCreators } from '../../store/ducks/post';
+
 class PostHeader extends Component {
   static propTypes = {
+    postId: PropTypes.string.isRequired,
     userId: PropTypes.string.isRequired,
     userName: PropTypes.string.isRequired,
     userAvatar: PropTypes.shape().isRequired,
     createdAt: PropTypes.string.isRequired,
     altCreatedAt: PropTypes.string.isRequired,
+    removeRequest: PropTypes.func.isRequired,
   };
 
   state = {
@@ -33,6 +39,11 @@ class PostHeader extends Component {
     this.setState(() => ({
       optionsVisible: !optionsVisible,
     }));
+  };
+
+  handleRemovePost = () => {
+    const { removeRequest, postId } = this.props;
+    removeRequest(postId);
   };
 
   render() {
@@ -57,7 +68,7 @@ class PostHeader extends Component {
           <GridColumn justifyContent="flex-start" alignItems="flex-end" flexDirection="column">
             <OptionsButton backgroundImage={`url(${IconSet})`} onClick={this.handleOptionsClick} />
             <Options visible={optionsVisible}>
-              <Item>Excluir publicação</Item>
+              <Item onClick={this.handleRemovePost}>Excluir publicação</Item>
             </Options>
           </GridColumn>
         </Grid>
@@ -66,4 +77,13 @@ class PostHeader extends Component {
   }
 }
 
-export default PostHeader;
+const mapStateToProps = state => ({
+  post: state.post,
+});
+
+const mapDispatchToProps = dispatch => bindActionCreators(PostCreators, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(PostHeader);

@@ -65,6 +65,7 @@ class Post extends Component {
     return (
       <Container>
         <PostHeader
+          postId={data._id}
           userId={data.user._id}
           userName={data.user.name}
           userAvatar={data.user.avatar.image}

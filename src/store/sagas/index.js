@@ -9,7 +9,7 @@ import { Types as LikeTypes } from '../ducks/like';
 import { signup, signin, signout } from './user';
 import { getPosts } from './feed';
 import { getReqsList } from './friendship';
-import { publish } from './post';
+import { publish, remove } from './post';
 import { toggle } from './like';
 
 export default function* rootSaga() {
@@ -20,6 +20,7 @@ export default function* rootSaga() {
     takeLatest(FeedTypes.POSTS_REQUEST, getPosts),
     takeLatest(FriendshipTypes.LISTREQS_REQUEST, getReqsList),
     takeLatest(PostTypes.PUBLISH_REQUEST, publish),
+    takeLatest(PostTypes.REMOVE_REQUEST, remove),
     takeLatest(LikeTypes.TOGGLE_REQUEST, toggle),
   ]);
 }

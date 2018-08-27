@@ -69,7 +69,9 @@ export const OptionsButton = styled.button`
 export const Options = styled.ul`
   display: flex;
   flex: 1;
-  width: 246px;
+  flex-direction: column;
+  justify-content: center;
+  width: 236px;
   padding: 5px 0;
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.15);
@@ -85,13 +87,18 @@ export const Item = styled.li`
   display: flex;
   flex: 1;
   align-items: center;
-  height: 40px;
+  height: 30px;
   padding: 10px;
-  font-size: 14px;
+  font-size: 12px;
+  border-width: 1px 0;
+  border-style: solid;
+  border-color: transparent;
   cursor: pointer;
 
   &:hover {
     background-color: #4267b2;
+    border-width: 1px 0;
+    border-style: solid;
     border-color: #29487d;
     color: #fff;
   }
