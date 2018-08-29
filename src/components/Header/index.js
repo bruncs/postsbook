@@ -56,6 +56,7 @@ class Header extends Component {
     const { showRequests } = this.state;
     const firstName = user.data.name.split(' ')[0];
     const requestsCount = friendship.data.length;
+    console.log(user);
     return (
       <Container>
         <Grid>
@@ -65,7 +66,7 @@ class Header extends Component {
             </Link>
           </GridColumn>
           <GridColumn justifyContent="flex-end" alignItems="center">
-            <Link to={`./profile?id=${user.data._id}`} style={{ textDecoration: 'none' }}>
+            <Link to={`./profile?id=${user.data.id}`} style={{ textDecoration: 'none' }}>
               <ProfileButton>
                 <Avatar size="mini" image={user.data.avatar.image} />
                 <Caption>{firstName}</Caption>
