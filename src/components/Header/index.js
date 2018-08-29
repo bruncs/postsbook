@@ -56,7 +56,6 @@ class Header extends Component {
     const { showRequests } = this.state;
     const firstName = user.data.name.split(' ')[0];
     const requestsCount = friendship.data.length;
-    console.log(user);
     return (
       <Container>
         <Grid>
