@@ -12,6 +12,7 @@ export const Cover = styled.div`
   border: solid #d3d6db;
   border-width: 0 1px 1px 1px;
   border-radius: 0 0 3px 3px;
+  margin-bottom: 10px;
 `;
 
 export const CoverImage = styled.div`
