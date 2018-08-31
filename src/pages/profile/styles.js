@@ -31,4 +31,9 @@ export const HeadLine = styled.ul`
   background-color: #fff;
 `;
 
-export const AvatarContainer = styled.div``;
+export const ProfileThumb = styled.div`
+  width: 176px;
+  height: 176px;
+  left: 100px;
+  border: 4px solid #fff;
+`;
