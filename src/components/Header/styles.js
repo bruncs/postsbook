@@ -10,6 +10,7 @@ export const Container = styled.div`
   border-bottom: 1px solid #29487d;
   position: sticky;
   top: 0;
+  z-index: 99;
 `;
 
 export const Grid = styled.div`

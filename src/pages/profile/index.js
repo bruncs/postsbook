@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import { Creators as UserCreators } from '../../store/ducks/user';
 import { Creators as FeedCreators } from '../../store/ducks/feed';
 import {
-  Content, Cover, CoverImage, HeadLine, ProfileThumb,
+  Content, Cover, CoverImage, HeadLine, ProfileThumb, Name,
 } from './styles';
 import Header from '../../components/Header';
 import Avatar from '../../components/Avatar';
@@ -47,12 +47,13 @@ class Profile extends Component {
     return (
       <Fragment>
         <Header />
-        <ProfileThumb>
-          <Avatar format="square" size="large" image={user.data.avatar.image} />
-        </ProfileThumb>
         <Content>
           <Cover>
             <CoverImage />
+            <ProfileThumb>
+              <Avatar border="0px" format="square" size="large" image={user.data.avatar.image} />
+            </ProfileThumb>
+            <Name>{user.data.name}</Name>
             <HeadLine />
           </Cover>
           <PostList posts={feed.data} user={user} />

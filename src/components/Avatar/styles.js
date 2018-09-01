@@ -40,5 +40,8 @@ export const Image = styled.img`
         return '50%';
     }
   }};
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: ${(props) => {
+    const { border } = props;
+    return border;
+  }};
 `;

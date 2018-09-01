@@ -32,8 +32,20 @@ export const HeadLine = styled.ul`
 `;
 
 export const ProfileThumb = styled.div`
+  position: absolute;
   width: 176px;
   height: 176px;
-  left: 100px;
+  margin-left: 16px;
+  margin-top: 58px;
   border: 4px solid #fff;
+  border-radius: 2px;
+`;
+
+export const Name = styled.h1`
+  position: absolute;
+  margin-left: 210px;
+  margin-top: 160px;
+  font-size: 24px;
+  color: #fff;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
 `;
