@@ -50,7 +50,7 @@ class Feed extends Component {
         <Header />
         <Content>
           <PostEditor user={user} />
-          <PostList posts={feed.data} user={user} />
+          <PostList posts={feed.data} user={user} location="feed" />
         </Content>
       </Container>
     );

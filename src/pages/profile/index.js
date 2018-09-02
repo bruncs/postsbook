@@ -56,7 +56,7 @@ class Profile extends Component {
             <Name>{user.data.name}</Name>
             <HeadLine />
           </Cover>
-          <PostList posts={feed.data} user={user} />
+          <PostList posts={feed.data} user={user} location="profile" />
         </Content>
       </Fragment>
     );
