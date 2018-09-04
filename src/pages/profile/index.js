@@ -6,10 +6,18 @@ import { bindActionCreators } from 'redux';
 import { Creators as UserCreators } from '../../store/ducks/user';
 import { Creators as FeedCreators } from '../../store/ducks/feed';
 import {
-  Content, Cover, CoverImage, HeadLine, ProfileThumb, Name,
+  Grid,
+  GridRow,
+  GridColumn,
+  Cover,
+  CoverImage,
+  HeadLine,
+  ProfileThumb,
+  Name,
 } from './styles';
 import Header from '../../components/Header';
 import Avatar from '../../components/Avatar';
+import FriendList from '../../components/FriendList';
 import PostList from '../../components/PostList';
 
 class Profile extends Component {
@@ -47,17 +55,26 @@ class Profile extends Component {
     return (
       <Fragment>
         <Header />
-        <Content>
-          <Cover>
-            <CoverImage />
-            <ProfileThumb>
-              <Avatar border="0px" format="square" size="large" image={user.data.avatar.image} />
-            </ProfileThumb>
-            <Name>{user.data.name}</Name>
-            <HeadLine />
-          </Cover>
-          <PostList posts={feed.data} user={user} location="profile" />
-        </Content>
+        <Grid>
+          <GridRow>
+            <Cover>
+              <CoverImage />
+              <ProfileThumb>
+                <Avatar border="0px" format="square" size="large" image={user.data.avatar.image} />
+              </ProfileThumb>
+              <Name>{user.data.name}</Name>
+              <HeadLine />
+            </Cover>
+          </GridRow>
+          <GridRow>
+            <GridColumn>
+              <FriendList />
+            </GridColumn>
+            <GridColumn>
+              <PostList posts={feed.data} user={user} location="profile" />
+            </GridColumn>
+          </GridRow>
+        </Grid>
       </Fragment>
     );
   }
