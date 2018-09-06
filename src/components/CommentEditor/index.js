@@ -8,6 +8,12 @@ class CommentEditor extends Component {
     userAvatar: PropTypes.shape().isRequired,
   };
 
+  constructor(props) {
+    super(props);
+    this.textField = React.createRef();
+    this.handleComment = this.handleComment.bind(this);
+  }
+
   state = {};
 
   // Paste as plain text into TextField
@@ -17,16 +23,21 @@ class CommentEditor extends Component {
     document.execCommand('insertText', false, text);
   };
 
+  handleComment() {
+    this.textField.current.focus();
+  }
+
   render() {
     const { userAvatar } = this.props;
     return (
-      <Container>
+      <Container onClick={this.handleComment}>
         <Avatar size="small" image={userAvatar} />
         <TextField
           contentEditable="true"
           onPaste={this.onPaste}
           suppressContentEditableWarning
           placeholder="Escreva um comentário..."
+          ref={this.textField}
         />
       </Container>
     );
