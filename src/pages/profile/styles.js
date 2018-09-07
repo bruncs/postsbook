@@ -15,7 +15,7 @@ export const GridRow = styled.div`
 export const GridColumn = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0 10px;
+  margin: 0 5px;
 `;
 
 export const Cover = styled.div`
