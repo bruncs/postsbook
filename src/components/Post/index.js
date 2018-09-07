@@ -27,6 +27,11 @@ class Post extends Component {
       likes: PropTypes.arrayOf(PropTypes.string).isRequired,
     }).isRequired,
     user: PropTypes.shape().isRequired,
+    thin: PropTypes.bool,
+  };
+
+  static defaultProps = {
+    thin: false,
   };
 
   constructor(props) {
@@ -58,12 +63,12 @@ class Post extends Component {
 
   render() {
     const { relativeCreatedAt, absoluteCreatedAt } = this.state;
-    const { data, user } = this.props;
+    const { data, user, thin } = this.props;
     const { content } = data;
     const numberOfLikes = data.likes.length;
     const liked = data.likes.indexOf(user.data.id) !== -1;
     return (
-      <Container>
+      <Container thin={thin}>
         <PostHeader
           postId={data._id}
           userId={data.user._id}

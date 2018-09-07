@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 700px;
+  width: ${(props) => {
+    const { thin } = props;
+    return thin ? '500px' : '700px';
+  }};
   padding: 15px 20px 10px 20px;
   border: 1px solid #ccc;
   border-radius: 5px;

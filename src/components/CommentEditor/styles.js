@@ -13,7 +13,6 @@ export const TextField = styled.div`
   border: 1px solid #ccc;
   border-radius: 17px;
   display: block;
-  width: 610px;
   min-height: 20px;
   font-size: 14px;
   color: #000;
