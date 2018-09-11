@@ -22,7 +22,7 @@ import PostList from '../../components/PostList';
 
 class Profile extends Component {
   static propTypes = {
-    match: PropTypes.string.isRequired,
+    match: PropTypes.shape().isRequired,
     user: PropTypes.shape({
       isAuthenticated: PropTypes.bool.isRequired,
     }).isRequired,
@@ -49,7 +49,7 @@ class Profile extends Component {
   }
 
   render() {
-    const { user, feed, match } = this.props;
+    const { user, feed } = this.props;
     if (!user.isAuthenticated) {
       return <Redirect to="./" />;
     }
@@ -63,9 +63,7 @@ class Profile extends Component {
               <ProfileThumb>
                 <Avatar border="0px" format="square" size="large" image={user.data.avatar.image} />
               </ProfileThumb>
-              <Name>
-                {user.data.name} {match.params.id}
-              </Name>
+              <Name>{user.data.name}</Name>
               <HeadLine />
             </Cover>
           </GridRow>

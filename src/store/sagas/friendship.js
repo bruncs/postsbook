@@ -18,3 +18,18 @@ export function* getReqsList() {
     yield put(FriendshipActions.listReqsFailure(err.response.data));
   }
 }
+
+export function* getFriendsList() {
+  try {
+    const token = localStorage.getItem(`${localStoragePrefix}token`);
+    const response = yield call(api.get, '/friends/list', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    yield put(FriendshipActions.listFriendsSuccess(response.data));
+  } catch (err) {
+    yield put(FriendshipActions.listFriendsFailure(err.response.data));
+  }
+}
