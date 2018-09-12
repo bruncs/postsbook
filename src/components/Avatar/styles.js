@@ -10,6 +10,8 @@ export const Image = styled.img`
         return '34px';
       case 'medium':
         return '48px';
+      case 'grown':
+        return '100px';
       case 'large':
         return '168px';
       default:
@@ -25,6 +27,8 @@ export const Image = styled.img`
         return '34px';
       case 'medium':
         return '48px';
+      case 'grown':
+        return '100px';
       case 'large':
         return '168px';
       default:
