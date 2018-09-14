@@ -13,3 +13,10 @@ export const Header = styled.div`
   align-items: center;
   height: 40px;
 `;
+
+export const Name = styled.div`
+  position: absolute;
+  display: flex;
+  align-items: flex-end;
+  color: #fff;
+`;

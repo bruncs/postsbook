@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Creators as FriendshipCreators } from '../../store/ducks/friendship';
-import { Container, Header } from './styles';
+import { Container, Header, Name } from './styles';
 import Avatar from '../Avatar';
 
 class FriendList extends Component {
@@ -27,9 +27,10 @@ class FriendList extends Component {
         <Header>Amigos</Header>
         <div>
           {friends.map(e => (
-            <Avatar key={e._id} size="grown" format="square" image={e.avatar.image}>
-              {e.name}
-            </Avatar>
+            <Fragment>
+              <Avatar key={e._id} size="grown" format="square" image={e.avatar.image} />
+              <Name>{e.name}</Name>
+            </Fragment>
           ))}
         </div>
       </Container>
