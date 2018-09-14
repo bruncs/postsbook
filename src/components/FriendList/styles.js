@@ -14,9 +14,15 @@ export const Header = styled.div`
   height: 40px;
 `;
 
+export const Friend = styled.div`
+  position: relative;
+`;
+
 export const Name = styled.div`
   position: absolute;
-  display: flex;
-  align-items: flex-end;
+  bottom: 5px;
+  left: 5px;
   color: #fff;
+  font-size: 12px;
+  line-height: 16px;
 `;
