@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -11,6 +12,10 @@ import {
 import Image from '../../assets/images/graphics/connected-world.png';
 
 class GuestContent extends Component {
+  static propTypes = {
+    signupRequest: PropTypes.func.isRequired,
+  };
+
   state = {
     data: {
       name: '',
@@ -19,14 +24,15 @@ class GuestContent extends Component {
     },
   };
 
-  handleChange = e => this.setState({
-    data: { ...this.state.data, [e.target.name]: e.target.value },
-  });
+  handleChange = e => this.setState(prevState => ({
+    data: { ...prevState.data, [e.target.name]: e.target.value },
+  }));
 
   handleSubmit = (e) => {
     const { data } = this.state;
+    const { signupRequest } = this.props;
     e.preventDefault();
-    this.props.signupRequest(data);
+    signupRequest(data);
   };
 
   render() {
@@ -42,12 +48,8 @@ class GuestContent extends Component {
             <img alt="" src={Image} />
           </GridColumn>
           <GridColumn padding="25px 0 0 40px">
-            <Title>
-Abra uma conta
-            </Title>
-            <Subtitle>
-É gratuito e sempre será.
-            </Subtitle>
+            <Title>Abra uma conta</Title>
+            <Subtitle>É gratuito e sempre será.</Subtitle>
             <Form onSubmit={this.handleSubmit}>
               <Input
                 autoComplete="name"
@@ -73,9 +75,7 @@ Abra uma conta
                 value={data.password}
                 onChange={this.handleChange}
               />
-              <Button type="submit">
-Cadastre-se
-              </Button>
+              <Button type="submit">Cadastre-se</Button>
             </Form>
           </GridColumn>
         </Grid>
