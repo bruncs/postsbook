@@ -24,9 +24,7 @@ class GuestContent extends Component {
     },
   };
 
-  handleChange = e => this.setState(prevState => ({
-    data: { ...prevState.data, [e.target.name]: e.target.value },
-  }));
+  handleChange = e => this.setState({ data: { [e.target.name]: e.target.value } });
 
   handleSubmit = (e) => {
     const { data } = this.state;
