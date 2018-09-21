@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import queryString from 'query-string';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -22,7 +23,7 @@ import PostList from '../../components/PostList';
 
 class Profile extends Component {
   static propTypes = {
-    match: PropTypes.shape().isRequired,
+    location: PropTypes.shape().isRequired,
     user: PropTypes.shape({
       isAuthenticated: PropTypes.bool.isRequired,
     }).isRequired,
@@ -49,7 +50,9 @@ class Profile extends Component {
   }
 
   render() {
-    const { user, feed } = this.props;
+    const { user, feed, location } = this.props;
+    const userId = queryString.parse(location.search).id;
+    console.log(userId);
     if (!user.isAuthenticated) {
       return <Redirect to="./" />;
     }
