@@ -5,7 +5,7 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Creators as UserCreators } from '../../store/ducks/user';
-import { Creators as FeedCreators } from '../../store/ducks/feed';
+import { Creators as ProfileCreators } from '../../store/ducks/profile';
 import {
   Grid,
   GridRow,
@@ -27,7 +27,7 @@ class Profile extends Component {
     user: PropTypes.shape({
       isAuthenticated: PropTypes.bool.isRequired,
     }).isRequired,
-    feed: PropTypes.shape({
+    profile: PropTypes.shape({
       data: PropTypes.arrayOf(PropTypes.shape).isRequired,
     }).isRequired,
     postsRequest: PropTypes.func.isRequired,
@@ -50,7 +50,7 @@ class Profile extends Component {
   }
 
   render() {
-    const { user, feed, location } = this.props;
+    const { user, profile, location } = this.props;
     const userId = queryString.parse(location.search).id;
     console.log(userId);
     if (!user.isAuthenticated) {
@@ -75,7 +75,7 @@ class Profile extends Component {
               <FriendList />
             </GridColumn>
             <GridColumn>
-              <PostList posts={feed.data} user={user} location="profile" />
+              <PostList posts={profile.data} user={user} location="profile" />
             </GridColumn>
           </GridRow>
         </Grid>
@@ -86,13 +86,13 @@ class Profile extends Component {
 
 const mapStateToProps = state => ({
   user: state.user,
-  feed: state.feed,
+  profile: state.profile,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(
   {
     ...UserCreators,
-    ...FeedCreators,
+    ...ProfileCreators,
   },
   dispatch,
 );
