@@ -1,8 +1,8 @@
 // TYPES
 export const Types = {
-  POSTS_REQUEST: 'profile/POSTS_REQUEST',
-  POSTS_SUCCESS: 'profile/POSTS_SUCCESS',
-  POSTS_FAILURE: 'profile/POSTS_FAILURE',
+  PROFILE_REQUEST: 'profile/PROFILE_REQUEST',
+  PROFILE_SUCCESS: 'profile/PROFILE_SUCCESS',
+  PROFILE_FAILURE: 'profile/PROFILE_FAILURE',
 };
 
 // INITIAL STATE
@@ -14,11 +14,11 @@ const INITIAL_STATE = {
 // REDUCER
 export default function profile(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case Types.POSTS_REQUEST:
+    case Types.PROFILE_REQUEST:
       return { ...state, postsLoading: true };
-    case Types.POSTS_SUCCESS:
+    case Types.PROFILE_SUCCESS:
       return { ...state, postsLoading: false, data: action.payload.data };
-    case Types.POSTS_FAILURE:
+    case Types.PROFILE_FAILURE:
       return { ...state, postsLoading: false, errors: action.payload.errors };
     default:
       return state;
@@ -27,18 +27,18 @@ export default function profile(state = INITIAL_STATE, action) {
 
 // ACTIONS
 export const Creators = {
-  postsRequest: data => ({
-    type: Types.POSTS_REQUEST,
-    payload: { data },
+  postsRequest: id => ({
+    type: Types.PROFILE_REQUEST,
+    payload: { id },
   }),
 
   postsSuccess: data => ({
-    type: Types.POSTS_SUCCESS,
+    type: Types.PROFILE_SUCCESS,
     payload: { data },
   }),
 
   postsFailure: errors => ({
-    type: Types.POSTS_FAILURE,
+    type: Types.PROFILE_FAILURE,
     payload: { errors },
   }),
 };

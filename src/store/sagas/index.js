@@ -20,7 +20,7 @@ export default function* rootSaga() {
     takeLatest(UserTypes.SIGNIN_REQUEST, signin),
     takeLatest(UserTypes.SIGNOUT_REQUEST, signout),
     takeLatest(FeedTypes.POSTS_REQUEST, getFeedPosts),
-    takeLatest(ProfileTypes.POSTS_REQUEST, getProfilePosts),
+    takeLatest(ProfileTypes.PROFILE_REQUEST, getProfilePosts),
     takeLatest(FriendshipTypes.LISTREQS_REQUEST, getReqsList),
     takeLatest(FriendshipTypes.LISTFRIENDS_REQUEST, getFriendsList),
     takeLatest(PostTypes.PUBLISH_REQUEST, publish),

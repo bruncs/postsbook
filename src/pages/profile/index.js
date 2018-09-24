@@ -38,8 +38,8 @@ class Profile extends Component {
   };
 
   componentDidMount() {
-    const { postsRequest } = this.props;
-    postsRequest();
+    const { postsRequest, location } = this.props;
+    postsRequest(queryString.parse(location.search).id);
     const interval = setInterval(() => postsRequest(), 10000);
     this.setState({ interval });
   }
@@ -51,8 +51,8 @@ class Profile extends Component {
 
   render() {
     const { user, profile, location } = this.props;
-    const userId = queryString.parse(location.search).id;
-    console.log(userId);
+    // const userId = queryString.parse(location.search).id;
+    console.log(profile);
     if (!user.isAuthenticated) {
       return <Redirect to="./" />;
     }

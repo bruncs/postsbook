@@ -4,13 +4,14 @@ import { localStoragePrefix } from '../../config';
 
 import { Creators as ProfileActions } from '../ducks/profile';
 
-export function* getPosts() {
+export function* getPosts(action) {
   try {
     const token = localStorage.getItem(`${localStoragePrefix}token`);
-    const response = yield call(api.get, '/profile', {
+    const response = yield call(api.post, '/profile', {
       headers: {
         Authorization: `Bearer ${token}`,
       },
+      id: action.payload.id,
     });
 
     yield put(ProfileActions.postsSuccess(response.data));
