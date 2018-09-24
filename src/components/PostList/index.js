@@ -7,18 +7,20 @@ const PostList = ({ posts, user, location }) => {
     case 'feed':
       return <Fragment>{posts.map(i => <Post key={i._id} data={i} user={user} />)}</Fragment>;
     case 'profile':
-      return (
-        <Fragment>{posts.map(i => <Post thin key={i._id} data={i} user={user} />)}</Fragment>
-      );
+      return <Fragment>{posts.map(i => <Post thin key={i._id} data={i} user={user} />)}</Fragment>;
     default:
       return null;
   }
 };
 
 PostList.propTypes = {
-  posts: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  posts: PropTypes.arrayOf(PropTypes.shape),
   user: PropTypes.shape().isRequired,
   location: PropTypes.string.isRequired,
+};
+
+PostList.defaultProps = {
+  posts: [],
 };
 
 export default PostList;

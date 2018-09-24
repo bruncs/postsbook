@@ -55,11 +55,11 @@ class PostHeader extends Component {
       <Container>
         <Grid>
           <GridColumn justifyContent="flex-start" alignItems="center">
-            <Link to={`./profile?id=${userId}`}>
+            <Link to={`./profile/${userId}`}>
               <Avatar userId={userId} image={userAvatar} />
             </Link>
             <Text>
-              <Link to={`./profile?id=${userId}`} style={{ textDecoration: 'none' }}>
+              <Link to={`./profile/${userId}`} style={{ textDecoration: 'none' }}>
                 <Name>{userName}</Name>
               </Link>
               <Time title={altCreatedAt}>{createdAt}</Time>

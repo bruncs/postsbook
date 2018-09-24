@@ -30,7 +30,7 @@ class FriendList extends Component {
         <Header>Amigos</Header>
         <div>
           {friends.map(e => (
-            <Link key={e._id} to={`./profile?id=${e._id}`}>
+            <Link key={e._id} to={`./${e._id}`}>
               <Friend>
                 <Avatar size="grown" format="square" image={e.avatar.image} />
                 <Name>{e.name}</Name>

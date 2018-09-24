@@ -42,7 +42,7 @@ class FriendRequest extends Component {
             <Avatar size="medium" image={avatar.image} />
           </GridColumn>
           <GridColumn padding="0 0 0 10px">
-            <Link to={`./profile?id=${id}`} style={{ textDecoration: 'none' }}>
+            <Link to={`./profile/${id}`} style={{ textDecoration: 'none' }}>
               <Name>{name}</Name>
             </Link>
             <ButtonGroup>

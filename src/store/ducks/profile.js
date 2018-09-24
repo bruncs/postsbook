@@ -27,17 +27,17 @@ export default function profile(state = INITIAL_STATE, action) {
 
 // ACTIONS
 export const Creators = {
-  postsRequest: id => ({
+  profileRequest: id => ({
     type: Types.PROFILE_REQUEST,
     payload: { id },
   }),
 
-  postsSuccess: data => ({
+  profileSuccess: data => ({
     type: Types.PROFILE_SUCCESS,
     payload: { data },
   }),
 
-  postsFailure: errors => ({
+  profileFailure: errors => ({
     type: Types.PROFILE_FAILURE,
     payload: { errors },
   }),

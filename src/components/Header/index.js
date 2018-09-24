@@ -65,7 +65,7 @@ class Header extends Component {
             </Link>
           </GridColumn>
           <GridColumn justifyContent="flex-end" alignItems="center">
-            <Link to={`./profile?id=${user.data.id}`} style={{ textDecoration: 'none' }}>
+            <Link to={`./profile/${user.data.id}`} style={{ textDecoration: 'none' }}>
               <ProfileButton>
                 <Avatar size="mini" image={user.data.avatar.image} />
                 <Caption>{firstName}</Caption>

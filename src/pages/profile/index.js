@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import queryString from 'query-string';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -23,36 +22,23 @@ import PostList from '../../components/PostList';
 
 class Profile extends Component {
   static propTypes = {
-    location: PropTypes.shape().isRequired,
+    match: PropTypes.shape().isRequired,
     user: PropTypes.shape({
       isAuthenticated: PropTypes.bool.isRequired,
     }).isRequired,
-    profile: PropTypes.shape({
-      data: PropTypes.arrayOf(PropTypes.shape).isRequired,
-    }).isRequired,
-    postsRequest: PropTypes.func.isRequired,
+    profile: PropTypes.shape().isRequired,
+    profileRequest: PropTypes.func.isRequired,
   };
 
-  state = {
-    interval: null,
-  };
+  state = {};
 
   componentDidMount() {
-    const { postsRequest, location } = this.props;
-    postsRequest(queryString.parse(location.search).id);
-    const interval = setInterval(() => postsRequest(), 10000);
-    this.setState({ interval });
-  }
-
-  componentWillUnmount() {
-    const { interval } = this.state;
-    clearInterval(interval);
+    const { profileRequest, match } = this.props;
+    profileRequest(match.params.id);
   }
 
   render() {
-    const { user, profile, location } = this.props;
-    // const userId = queryString.parse(location.search).id;
-    console.log(profile);
+    const { user, profile } = this.props;
     if (!user.isAuthenticated) {
       return <Redirect to="./" />;
     }
@@ -75,7 +61,7 @@ class Profile extends Component {
               <FriendList />
             </GridColumn>
             <GridColumn>
-              <PostList posts={profile.data} user={user} location="profile" />
+              <PostList posts={profile.data.posts} user={user} location="profile" />
             </GridColumn>
           </GridRow>
         </Grid>
