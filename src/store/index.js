@@ -1,13 +1,23 @@
 import { createStore, compose, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
+import { connectRouter, routerMiddleware } from 'connected-react-router';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
+import history from '../history';
 import sagas from './sagas';
 import reducers from './ducks';
 
 const middlewares = [];
-
 const sagaMiddleware = createSagaMiddleware();
+const persistConfig = {
+  key: 'root',
+  storage,
+};
 
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+middlewares.push(routerMiddleware(history));
 middlewares.push(sagaMiddleware);
 
 /* eslint-disable */
@@ -19,8 +29,13 @@ const composeSetup =
     : compose;
 /* eslint-enable */
 
-const store = createStore(reducers, composeSetup(applyMiddleware(...middlewares)));
+const store = createStore(
+  connectRouter(history)(persistedReducer),
+  composeSetup(applyMiddleware(...middlewares)),
+);
+
+const persistor = persistStore(store);
 
 sagaMiddleware.run(sagas);
 
-export default store;
+export { store, persistor };
