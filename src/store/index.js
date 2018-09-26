@@ -5,8 +5,8 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 import history from '../history';
+import rootReducer from './ducks';
 import sagas from './sagas';
-import reducers from './ducks';
 
 const middlewares = [];
 const sagaMiddleware = createSagaMiddleware();
