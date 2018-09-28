@@ -1,4 +1,14 @@
+const webpack = require('webpack');
+const dotenv = require('dotenv');
 const path = require('path');
+
+const env = dotenv.config().parsed;
+
+const envKeys = Object.keys(env).reduce((prev, next) => {
+  const previous = prev;
+  previous[`process.env.${next}`] = JSON.stringify(env[next]);
+  return previous;
+}, {});
 
 module.exports = {
   entry: path.join(__dirname, 'src', 'index.js'),
@@ -29,6 +39,7 @@ module.exports = {
       },
     ],
   },
+  plugins: [new webpack.DefinePlugin(envKeys)],
   devServer: {
     contentBase: path.join(__dirname, 'public'),
     historyApiFallback: true,
