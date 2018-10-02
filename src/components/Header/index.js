@@ -21,6 +21,7 @@ import Avatar from '../Avatar';
 import Logo from '../../assets/images/icons/whitelogo.png';
 import Iconset2 from '../../assets/images/icons/iconset2.png';
 import FriendRequestList from '../FriendRequestList';
+import SearchBar from '../SearchBar';
 
 class Header extends Component {
   static propTypes = {
@@ -63,6 +64,7 @@ class Header extends Component {
             <Link to="./feed">
               <img alt="" src={Logo} />
             </Link>
+            <SearchBar />
           </GridColumn>
           <GridColumn justifyContent="flex-end" alignItems="center">
             <Link to={`./profile/${user.data.id}`} style={{ textDecoration: 'none' }}>
