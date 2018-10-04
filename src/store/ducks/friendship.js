@@ -6,6 +6,9 @@ export const Types = {
   LISTFRIENDS_REQUEST: 'friends/LISTFRIENDS_REQUEST',
   LISTFRIENDS_SUCCESS: 'friends/LISTFRIENDS_SUCCESS',
   LISTFRIENDS_FAILURE: 'friends/LISTFRIENDS_FAILURE',
+  ACCEPT_REQUEST: 'requests/ACCEPT_REQUEST',
+  ACCEPT_SUCCESS: 'requests/ACCEPT_SUCCESS',
+  ACCEPT_FAILURE: 'requests/ACCEPT_FAILURE',
 };
 
 const INITIAL_STATE = {
@@ -38,6 +41,12 @@ export default function friendship(state = INITIAL_STATE, action) {
       };
     case Types.LISTFRIENDS_FAILURE:
       return { ...state, friendsLoading: false, errors: action.payload.errors };
+    case Types.ACCEPT_REQUEST:
+      return { ...state, id: action.payload.id };
+    case Types.ACCEPT_SUCCESS:
+      return { ...state };
+    case Types.ACCEPT_FAILURE:
+      return { ...state, errors: action.payload.errors };
     default:
       return state;
   }
@@ -70,6 +79,20 @@ export const Creators = {
 
   listFriendsFailure: errors => ({
     type: Types.LISTFRIENDS_FAILURE,
+    payload: { errors },
+  }),
+
+  acceptRequest: id => ({
+    type: Types.ACCEPT_REQUEST,
+    payload: { id },
+  }),
+
+  acceptSuccess: () => ({
+    type: Types.ACCEPT_SUCCESS,
+  }),
+
+  acceptFailure: errors => ({
+    type: Types.ACCEPT_FAILURE,
     payload: { errors },
   }),
 };
